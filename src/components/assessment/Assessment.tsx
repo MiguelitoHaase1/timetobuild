@@ -1,11 +1,8 @@
 import { useState } from 'react'
 import { AssessmentQuestion } from './AssessmentQuestion'
 import { Button } from '../ui/Button'
-import {
-  assessmentQuestions,
-  type AssessmentAnswer,
-  type AssessmentResult,
-} from '../../types/assessment'
+import { assessmentQuestions, assessmentResults } from '@/content'
+import type { AssessmentAnswer, AssessmentResult } from '@/types/assessment'
 
 interface AssessmentProps {
   onComplete?: (result: AssessmentResult) => void
@@ -59,18 +56,15 @@ export function Assessment({ onComplete }: AssessmentProps) {
     let level: 'low' | 'medium' | 'high'
     let recommendation: string
 
-    if (percentage < 40) {
+    if (percentage < assessmentResults.lowThreshold) {
       level = 'low'
-      recommendation =
-        "Start by identifying a small team (5-10 people) with clear pain points and executive air cover. Focus on one high-visibility problem they can solve in 3-6 months."
-    } else if (percentage < 70) {
+      recommendation = assessmentResults.recommendations.low
+    } else if (percentage < assessmentResults.mediumThreshold) {
       level = 'medium'
-      recommendation =
-        'You have a promising team identified. Ensure they have autonomy to experiment, hands-on coaching support, and a way to demonstrate results that leadership will notice.'
+      recommendation = assessmentResults.recommendations.medium
     } else {
       level = 'high'
-      recommendation =
-        "You've identified an excellent pilot team. Focus on hands-on capability building with real projects. Let results speak: when others see what this team builds, adoption will accelerate organically."
+      recommendation = assessmentResults.recommendations.high
     }
 
     return { score, maxScore, percentage, level, recommendation }

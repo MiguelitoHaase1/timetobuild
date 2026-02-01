@@ -1,6 +1,7 @@
 import { SectionHeading } from '../ui/SectionHeading'
 import { Card } from '../ui/Card'
 import { Button } from '../ui/Button'
+import { approach, contact } from '@/content'
 
 interface ApproachProps {
   onAssessmentClick?: () => void
@@ -11,69 +12,53 @@ export function Approach({ onAssessmentClick }: ApproachProps) {
     <section className="py-20 px-6 bg-cream-panel">
       <div className="max-w-4xl mx-auto">
         <SectionHeading level={2} centered className="mb-12">
-          The Approach
+          {approach.heading}
         </SectionHeading>
 
         <p className="text-xl text-text-primary text-center mb-12">
-          CEO mandate + bottom-up execution. Think lean manufacturing, not IT deployment.
+          {approach.subheading}
         </p>
 
         <div className="space-y-6 mb-12">
-          <Card>
-            <h3 className="text-xl font-serif font-semibold text-coral mb-3">
-              1. CEO-Level Commitment
-            </h3>
-            <p className="text-text-secondary">
-              The CEO owns this as strategic priority. When treated as "another IT project," teams optimize for approval. When framed as strategic transformation, teams optimize for results.
-            </p>
-          </Card>
-
-          <Card>
-            <h3 className="text-xl font-serif font-semibold text-coral mb-3">
-              2. Individual Capability Building
-            </h3>
-            <p className="text-text-secondary">
-              Start with 5-20 people. Hands-on coaching, not training sessions. Let them build things that matter. Capability spreads through demonstration: "I saw what Sarah built and I want to do that."
-            </p>
-          </Card>
-
-          <Card>
-            <h3 className="text-xl font-serif font-semibold text-coral mb-3">
-              3. World-Class Tools with Guardrails
-            </h3>
-            <p className="text-text-secondary">
-              Best-in-class tools, broadly available, within security and compliance frameworks. Not "approved tools only" or pilot programs. Companies winning this solved governance so they could deploy real capability.
-            </p>
-          </Card>
+          {approach.cards.map((card, index) => (
+            <Card key={index}>
+              <h3 className="text-xl font-serif font-semibold text-coral mb-3">
+                {card.number}. {card.title}
+              </h3>
+              <p className="text-text-secondary">
+                {card.description}
+              </p>
+            </Card>
+          ))}
         </div>
 
         <div className="panel text-center">
           <h3 className="text-xl font-serif font-semibold text-text-primary mb-3">
-            3-6 Months, Not Years
+            {approach.timeline.heading}
           </h3>
           <p className="text-text-secondary">
-            Focused team. Build capability, demonstrate impact, expand.
+            {approach.timeline.description}
           </p>
         </div>
 
         {onAssessmentClick && (
           <div className="text-center mt-12">
             <Button onClick={onAssessmentClick} size="large">
-              Identify Your Pilot Team
+              {approach.assessmentCta}
             </Button>
           </div>
         )}
 
         <div className="text-center panel max-w-xl mx-auto mt-12">
           <p className="text-body text-text-primary mb-3">
-            Want to work with <strong>Michael Haase</strong> to capture these gains for your organization?
+            Want to work with <strong>{contact.name}</strong> to capture these gains for your organization?
           </p>
           <p className="text-body text-text-primary">
-            <a href="mailto:michael@timetobuild.ai" className="text-coral hover:underline font-semibold">
-              michael@timetobuild.ai
+            <a href={`mailto:${contact.email}`} className="text-coral hover:underline font-semibold">
+              {contact.email}
             </a>
           </p>
-          <p className="text-small text-text-muted mt-2">timetobuild.ai</p>
+          <p className="text-small text-text-muted mt-2">{contact.domain}</p>
         </div>
       </div>
     </section>

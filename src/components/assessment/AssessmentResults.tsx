@@ -5,10 +5,11 @@ import type { AssessmentResult } from '../../types/assessment'
 
 interface AssessmentResultsProps {
   result: AssessmentResult
-  onEmailSubmit: (email: string) => void
+  onEmailSubmit?: (email: string) => void
+  onReset?: () => void
 }
 
-export function AssessmentResults({ result, onEmailSubmit }: AssessmentResultsProps) {
+export function AssessmentResults({ result, onEmailSubmit, onReset }: AssessmentResultsProps) {
   const [email, setEmail] = useState('')
   const [isSubmitted, setIsSubmitted] = useState(false)
 
@@ -21,7 +22,7 @@ export function AssessmentResults({ result, onEmailSubmit }: AssessmentResultsPr
       return
     }
 
-    onEmailSubmit(email)
+    onEmailSubmit?.(email)
     setIsSubmitted(true)
   }
 
@@ -92,6 +93,14 @@ export function AssessmentResults({ result, onEmailSubmit }: AssessmentResultsPr
             Michael will review your pilot team profile and reach out to discuss next steps.
           </p>
         </Card>
+      )}
+
+      {onReset && (
+        <div className="text-center">
+          <Button variant="secondary" onClick={onReset}>
+            Retake Assessment
+          </Button>
+        </div>
       )}
     </div>
   )
