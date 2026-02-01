@@ -20,7 +20,9 @@ describe('Hero', () => {
 
   it('renders contact CTA', () => {
     render(<Hero />)
-    expect(screen.getByText(/Want to work with/i)).toBeInTheDocument()
+    expect(screen.getByText(/Want to know more about/i)).toBeInTheDocument()
+    const timeToBuildRefs = screen.getAllByText(/Time To Build/i)
+    expect(timeToBuildRefs.length).toBeGreaterThan(0)
     expect(screen.getByText(/michael@timetobuild.ai/i)).toBeInTheDocument()
   })
 })

@@ -50,15 +50,12 @@ export function Approach({ onAssessmentClick }: ApproachProps) {
         )}
 
         <div className="text-center panel max-w-xl mx-auto mt-12">
-          <p className="text-body text-text-primary mb-3">
-            Want to work with <strong>{contact.name}</strong> to capture these gains for your organization?
-          </p>
           <p className="text-body text-text-primary">
+            Want to know more about <strong>Time To Build</strong>? Write{' '}
             <a href={`mailto:${contact.email}`} className="text-coral hover:underline font-semibold">
               {contact.email}
             </a>
           </p>
-          <p className="text-small text-text-muted mt-2">{contact.domain}</p>
         </div>
       </div>
     </section>

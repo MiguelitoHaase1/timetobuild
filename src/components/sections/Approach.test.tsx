@@ -50,12 +50,11 @@ describe('Approach', () => {
     expect(button).not.toBeInTheDocument()
   })
 
-  it('renders Michael Haase contact information', () => {
+  it('renders Time To Build contact information', () => {
     render(<Approach />)
 
-    expect(screen.getByText(/Michael Haase/i)).toBeInTheDocument()
+    expect(screen.getByText(/Time To Build/i)).toBeInTheDocument()
+    expect(screen.getByText(/Want to know more about/i)).toBeInTheDocument()
     expect(screen.getByText(/michael@timetobuild.ai/i)).toBeInTheDocument()
-    const timetobuildRefs = screen.getAllByText(/timetobuild.ai/i)
-    expect(timetobuildRefs.length).toBeGreaterThan(0)
   })
 })

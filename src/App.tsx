@@ -22,10 +22,8 @@ function App() {
 
       <div className="py-12 px-6">
         <div className="panel max-w-xl mx-auto text-center">
-          <p className="text-body text-text-primary mb-3">
-            Want to work with <strong>{contact.name}</strong>?
-          </p>
           <p className="text-body text-text-primary">
+            Want to know more about <strong>Time To Build</strong>? Write{' '}
             <a href={`mailto:${contact.email}`} className="text-coral hover:underline font-semibold">
               {contact.email}
             </a>
