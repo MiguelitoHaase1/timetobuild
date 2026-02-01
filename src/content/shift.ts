@@ -1,8 +1,7 @@
 export const shift = {
-  heading: "Best of breed AI 10Xes employee engagement and efficiency",
+  heading: "Examples of what AI can do for your employees",
   paragraphs: [
-    "Knowledge workers are doing in days what took weeks. People with zero coding experience are building tools that save their teams half a day every week.",
-    "The bottleneck shifts from doing to deciding. When execution is 10x faster, the constraint becomes: what should we build? Which problems matter most?",
+    "The first movers are doing in days what took weeks. People with zero coding experience are building tools that save their teams half a day every week.",
   ],
   capabilitiesHeading: "What Anyone Can Build Today:",
   capabilities: [
@@ -40,26 +39,6 @@ export const shift = {
       quote: "Did a month of work in 3 days. The disorientation isn't from the workload — it's from decision fatigue. When execution is instant, the bottleneck becomes 'what do I actually want?'",
       author: "Anonymous",
       role: "Product manager, Novo Nordisk, Dec 2025",
-    },
-    {
-      quote: "Zero coding experience... save the team half a day weekly",
-      author: "Sam Bowman",
-      role: "Anthropic",
-    },
-    {
-      quote: "Did a month of work in 3 days",
-      author: "Allan",
-      role: "PM, Jabra",
-    },
-    {
-      quote: "It's about being willing to try 3-4 simple commands. That's it.",
-      author: "Teresa Torres",
-      role: "Product Discovery Coach",
-    },
-    {
-      quote: "Completed in days what would have taken weeks of traditional development",
-      author: "Knowledge Worker",
-      role: "Financial Services",
     },
   ],
 } as const;

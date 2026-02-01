@@ -10,7 +10,7 @@ describe('App', () => {
 
   it('renders the Shift section', () => {
     render(<App />)
-    expect(screen.getByRole('heading', { level: 2, name: /Best of breed AI 10Xes employee engagement and efficiency/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 2, name: /Examples of what AI can do for your employees/i })).toBeInTheDocument()
   })
 
   it('renders the Approach section', () => {

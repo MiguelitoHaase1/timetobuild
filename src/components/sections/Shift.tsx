@@ -10,12 +10,19 @@ export function Shift() {
           {shift.heading}
         </SectionHeading>
 
-        <div className="space-y-6 text-body text-text-secondary leading-relaxed mb-12">
-          {shift.paragraphs.map((paragraph, index) => (
-            <p key={index} dangerouslySetInnerHTML={{ __html: paragraph.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\*(.+?)\*/g, '<em>$1</em>') }} />
+        <div className="grid md:grid-cols-2 gap-6 mb-12">
+          {shift.testimonials.slice(0, 2).map((testimonial, index) => (
+            <TestimonialCard
+              key={index}
+              quote={testimonial.quote}
+              author={testimonial.author}
+              role={testimonial.role}
+            />
           ))}
+        </div>
 
-          <h3 className="text-xl font-serif font-semibold text-text-primary mt-8 mb-6">
+        <div className="space-y-6 text-body text-text-secondary leading-relaxed">
+          <h3 className="text-xl font-serif font-semibold text-text-primary mb-6">
             {shift.capabilitiesHeading}
           </h3>
 
@@ -32,21 +39,6 @@ export function Shift() {
             "{shift.quote}"
             <span className="block text-small text-text-muted mt-2">— {shift.quoteAuthor}</span>
           </p>
-
-          <p>
-            {shift.closing}
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-6">
-          {shift.testimonials.map((testimonial, index) => (
-            <TestimonialCard
-              key={index}
-              quote={testimonial.quote}
-              author={testimonial.author}
-              role={testimonial.role}
-            />
-          ))}
         </div>
       </div>
     </section>
