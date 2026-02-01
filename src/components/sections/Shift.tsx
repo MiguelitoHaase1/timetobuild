@@ -1,4 +1,5 @@
 import { SectionHeading } from '../ui/SectionHeading'
+import { TestimonialCard } from '../ui/TestimonialCard'
 import { shift } from '@/content'
 
 export function Shift() {
@@ -9,7 +10,7 @@ export function Shift() {
           {shift.heading}
         </SectionHeading>
 
-        <div className="space-y-6 text-body text-text-secondary leading-relaxed">
+        <div className="space-y-6 text-body text-text-secondary leading-relaxed mb-12">
           {shift.paragraphs.map((paragraph, index) => (
             <p key={index} dangerouslySetInnerHTML={{ __html: paragraph.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\*(.+?)\*/g, '<em>$1</em>') }} />
           ))}
@@ -35,6 +36,17 @@ export function Shift() {
           <p>
             {shift.closing}
           </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          {shift.testimonials.map((testimonial, index) => (
+            <TestimonialCard
+              key={index}
+              quote={testimonial.quote}
+              author={testimonial.author}
+              role={testimonial.role}
+            />
+          ))}
         </div>
       </div>
     </section>

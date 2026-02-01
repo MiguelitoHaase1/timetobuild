@@ -10,12 +10,7 @@ describe('App', () => {
 
   it('renders the Shift section', () => {
     render(<App />)
-    expect(screen.getByRole('heading', { level: 2, name: /The Shift/i })).toBeInTheDocument()
-  })
-
-  it('renders the Proof section', () => {
-    render(<App />)
-    expect(screen.getByRole('heading', { level: 2, name: /Voices from the Field/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 2, name: /Best of breed AI 10Xes employee engagement and efficiency/i })).toBeInTheDocument()
   })
 
   it('renders the Approach section', () => {
@@ -28,5 +23,11 @@ describe('App', () => {
 
     const button = screen.getByRole('button', { name: /Identify Your Pilot Team/i })
     expect(button).toBeInTheDocument()
+  })
+
+  it('renders contact CTA at the bottom', () => {
+    render(<App />)
+    const ctaLinks = screen.getAllByText(/michael@timetobuild.ai/i)
+    expect(ctaLinks.length).toBeGreaterThan(0)
   })
 })

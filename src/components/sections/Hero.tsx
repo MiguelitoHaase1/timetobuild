@@ -1,6 +1,5 @@
 import { SectionHeading } from '../ui/SectionHeading'
-import { TestimonialCard } from '../ui/TestimonialCard'
-import { hero } from '@/content'
+import { hero, contact } from '@/content'
 
 export function Hero() {
   return (
@@ -20,17 +19,17 @@ export function Hero() {
           <p className="text-body text-text-secondary max-w-3xl mx-auto mb-12">
             {hero.callout}
           </p>
-        </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
-          {hero.testimonials.map((testimonial, index) => (
-            <TestimonialCard
-              key={index}
-              quote={testimonial.quote}
-              author={testimonial.author}
-              role={testimonial.role}
-            />
-          ))}
+          <div className="panel max-w-xl mx-auto">
+            <p className="text-body text-text-primary mb-3">
+              Want to work with <strong>{contact.name}</strong>?
+            </p>
+            <p className="text-body text-text-primary">
+              <a href={`mailto:${contact.email}`} className="text-coral hover:underline font-semibold">
+                {contact.email}
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </section>

@@ -5,7 +5,7 @@ import { Shift } from './Shift'
 describe('Shift', () => {
   it('renders the section heading', () => {
     render(<Shift />)
-    expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(/The Shift/i)
+    expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(/Best of breed AI 10Xes employee engagement and efficiency/i)
   })
 
   it('renders the days what took weeks message', () => {
@@ -26,8 +26,8 @@ describe('Shift', () => {
 
   it('renders at least one testimonial', () => {
     render(<Shift />)
-    // Look for testimonial structure (Card component with quote styling)
-    const testimonials = screen.getAllByText(/".*"/i)
-    expect(testimonials.length).toBeGreaterThan(0)
+    // Look for testimonial authors (Sam Bowman appears multiple times)
+    const samBowmanElements = screen.getAllByText(/Sam Bowman/i)
+    expect(samBowmanElements.length).toBeGreaterThan(0)
   })
 })
