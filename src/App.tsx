@@ -1,9 +1,11 @@
-import { Hero, Shift, Proof, Approach } from './components/sections'
+import { Hero, Shift, Proof, Approach, AssessmentSection } from './components/sections'
 
 function App() {
   const handleCTAClick = () => {
-    // TODO: Scroll to assessment section (Phase 3)
-    console.log('Assess Your AI Readiness clicked')
+    const assessmentSection = document.getElementById('assessment')
+    if (assessmentSection) {
+      assessmentSection.scrollIntoView({ behavior: 'smooth' })
+    }
   }
 
   return (
@@ -12,6 +14,7 @@ function App() {
       <Shift />
       <Proof />
       <Approach />
+      <AssessmentSection />
     </div>
   )
 }
