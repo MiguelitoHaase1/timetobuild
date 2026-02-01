@@ -15,9 +15,9 @@ describe('Approach', () => {
 
   it('renders the three essential elements', () => {
     render(<Approach />)
+    expect(screen.getByText(/Availability of World-Class Tools/i)).toBeInTheDocument()
     expect(screen.getByText(/CEO-Level Engagement/i)).toBeInTheDocument()
-    expect(screen.getByText(/Individual Capability Building/i)).toBeInTheDocument()
-    expect(screen.getByText(/World-Class Tools with Guardrails/i)).toBeInTheDocument()
+    expect(screen.getByText(/Train-the-trainer/i)).toBeInTheDocument()
   })
 
   it('renders timeline information', () => {

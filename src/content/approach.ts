@@ -5,18 +5,18 @@ export const approach = {
   cards: [
     {
       number: "1",
+      title: "Availability of World-Class Tools",
+      description: "Via small products and architectural work, we ensure that best-in-class tools become broadly available within security and compliance frameworks. Companies winning this solved governance so they could deploy real capability.",
+    },
+    {
+      number: "2",
       title: "CEO-Level Engagement",
       description: "The CEO owns this and is expected to live it. When treated as \"another IT project,\" teams optimize for approval. We help the CEO walk the talk, integrating AI in her work first as a role model.",
     },
     {
-      number: "2",
-      title: "Individual Capability Building",
-      description: "After the CEO, we start with a few teams of 5-20 people. We deliver hands-on coaching, to identify and nail the workflows that are most prone for AI agentification. Capability spreads through demonstration: \"I saw what Sarah built and I want to do that.\"",
-    },
-    {
       number: "3",
-      title: "World-Class Tools with Guardrails",
-      description: "We ensure that best-in-class tools become broadly available within security and compliance frameworks. Companies winning this solved governance so they could deploy real capability.",
+      title: "Train-the-trainer",
+      description: "After the CEO, we start with a few teams of 5-20 people. We deliver hands-on coaching, to identify and nail the workflows that are most prone for AI agentification. Capability spreads through demonstration: \"I saw what Sarah built and I want to do that.\"",
     },
   ],
 

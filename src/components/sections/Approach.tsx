@@ -36,13 +36,6 @@ export function Approach({ onAssessmentClick }: ApproachProps) {
             <p className="text-text-secondary">
               {approach.cards[1].description}
             </p>
-            {onAssessmentClick && (
-              <div className="mt-4 pt-4 border-t border-cream-panel">
-                <Button onClick={onAssessmentClick} variant="secondary">
-                  {approach.assessmentCta}
-                </Button>
-              </div>
-            )}
           </Card>
 
           <Card>
@@ -52,6 +45,13 @@ export function Approach({ onAssessmentClick }: ApproachProps) {
             <p className="text-text-secondary">
               {approach.cards[2].description}
             </p>
+            {onAssessmentClick && (
+              <div className="mt-4 pt-4 border-t border-cream-panel">
+                <Button onClick={onAssessmentClick} variant="secondary">
+                  {approach.assessmentCta}
+                </Button>
+              </div>
+            )}
           </Card>
         </div>
 
