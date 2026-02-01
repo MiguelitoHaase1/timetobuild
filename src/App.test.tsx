@@ -15,7 +15,7 @@ describe('App', () => {
 
   it('renders the Approach section', () => {
     render(<App />)
-    expect(screen.getByRole('heading', { level: 2, name: /The Approach/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 2, name: /Our Approach/i })).toBeInTheDocument()
   })
 
   it('renders the assessment modal button in Approach section', () => {

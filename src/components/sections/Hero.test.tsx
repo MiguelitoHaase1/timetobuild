@@ -10,12 +10,12 @@ describe('Hero', () => {
 
   it('renders CEO decision messaging', () => {
     render(<Hero />)
-    expect(screen.getByText(/It is a CEO decision to enable such improvements, not an IT initiative/i)).toBeInTheDocument()
+    expect(screen.getByText(/needs to be managed by the CEO/i)).toBeInTheDocument()
   })
 
   it('renders 10x engagement and efficiency message', () => {
     render(<Hero />)
-    expect(screen.getByText(/10x your employee engagement and efficiency/i)).toBeInTheDocument()
+    expect(screen.getByText(/increase employee engagement and efficiency by 10X/i)).toBeInTheDocument()
   })
 
   it('renders contact CTA', () => {

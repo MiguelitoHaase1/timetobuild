@@ -20,16 +20,39 @@ export function Approach({ onAssessmentClick }: ApproachProps) {
         </p>
 
         <div className="space-y-6 mb-12">
-          {approach.cards.map((card, index) => (
-            <Card key={index}>
-              <h3 className="text-xl font-serif font-semibold text-coral mb-3">
-                {card.number}. {card.title}
-              </h3>
-              <p className="text-text-secondary">
-                {card.description}
-              </p>
-            </Card>
-          ))}
+          <Card>
+            <h3 className="text-xl font-serif font-semibold text-coral mb-3">
+              {approach.cards[0].number}. {approach.cards[0].title}
+            </h3>
+            <p className="text-text-secondary">
+              {approach.cards[0].description}
+            </p>
+          </Card>
+
+          <Card>
+            <h3 className="text-xl font-serif font-semibold text-coral mb-3">
+              {approach.cards[1].number}. {approach.cards[1].title}
+            </h3>
+            <p className="text-text-secondary">
+              {approach.cards[1].description}
+            </p>
+            {onAssessmentClick && (
+              <div className="mt-4 pt-4 border-t border-cream-panel">
+                <Button onClick={onAssessmentClick} variant="secondary">
+                  {approach.assessmentCta}
+                </Button>
+              </div>
+            )}
+          </Card>
+
+          <Card>
+            <h3 className="text-xl font-serif font-semibold text-coral mb-3">
+              {approach.cards[2].number}. {approach.cards[2].title}
+            </h3>
+            <p className="text-text-secondary">
+              {approach.cards[2].description}
+            </p>
+          </Card>
         </div>
 
         <div className="panel text-center">
@@ -40,14 +63,6 @@ export function Approach({ onAssessmentClick }: ApproachProps) {
             {approach.timeline.description}
           </p>
         </div>
-
-        {onAssessmentClick && (
-          <div className="text-center mt-12">
-            <Button onClick={onAssessmentClick} size="large">
-              {approach.assessmentCta}
-            </Button>
-          </div>
-        )}
 
         <div className="text-center panel max-w-xl mx-auto mt-12">
           <p className="text-body text-text-primary">

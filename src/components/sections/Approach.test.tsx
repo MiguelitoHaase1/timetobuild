@@ -5,17 +5,17 @@ import { Approach } from './Approach'
 describe('Approach', () => {
   it('renders the section heading', () => {
     render(<Approach />)
-    expect(screen.getByRole('heading', { level: 2, name: /The Approach/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 2, name: /Our Approach/i })).toBeInTheDocument()
   })
 
   it('renders the framework description', () => {
     render(<Approach />)
-    expect(screen.getByText(/CEO mandate.*bottom-up execution/i)).toBeInTheDocument()
+    expect(screen.getByText(/world class products/i)).toBeInTheDocument()
   })
 
   it('renders the three essential elements', () => {
     render(<Approach />)
-    expect(screen.getByText(/CEO-Level Commitment/i)).toBeInTheDocument()
+    expect(screen.getByText(/CEO-Level Engagement/i)).toBeInTheDocument()
     expect(screen.getByText(/Individual Capability Building/i)).toBeInTheDocument()
     expect(screen.getByText(/World-Class Tools with Guardrails/i)).toBeInTheDocument()
   })
@@ -30,9 +30,9 @@ describe('Approach', () => {
     expect(screen.getByText(/5-20 people/i)).toBeInTheDocument()
   })
 
-  it('references lean manufacturing analogy', () => {
+  it('references lean transformations', () => {
     render(<Approach />)
-    expect(screen.getByText(/lean manufacturing/i)).toBeInTheDocument()
+    expect(screen.getByText(/Lean Transformations/i)).toBeInTheDocument()
   })
 
   it('renders assessment button when onAssessmentClick is provided', () => {
