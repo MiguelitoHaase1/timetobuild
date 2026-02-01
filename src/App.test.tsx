@@ -1,33 +1,36 @@
-import { describe, it, expect } from 'vitest'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { describe, it, expect, vi } from 'vitest'
+import { render, screen } from '@testing-library/react'
 import App from './App'
 
 describe('App', () => {
-  it('renders the main heading', () => {
+  it('renders the Hero section', () => {
     render(<App />)
-    expect(screen.getByText('Time to Build')).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 1, name: /This is a CEO conversation/i })).toBeInTheDocument()
   })
 
-  it('renders the tagline', () => {
+  it('renders the Shift section', () => {
     render(<App />)
-    expect(screen.getByText(/AI Empowerment consulting/i)).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 2, name: /The Shift/i })).toBeInTheDocument()
   })
 
-  it('renders coming soon message', () => {
+  it('renders the Proof section', () => {
     render(<App />)
-    expect(screen.getByText('Coming Soon')).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 2, name: /The Proof/i })).toBeInTheDocument()
   })
 
-  it('increments counter when button is clicked', () => {
+  it('renders the Approach section', () => {
     render(<App />)
-    const button = screen.getByRole('button', { name: /Learn More/i })
+    expect(screen.getByRole('heading', { level: 2, name: /The Approach/i })).toBeInTheDocument()
+  })
 
-    expect(button).toHaveTextContent('Learn More (0)')
+  it('logs to console when CTA is clicked', () => {
+    const consoleSpy = vi.spyOn(console, 'log')
+    render(<App />)
 
-    fireEvent.click(button)
-    expect(button).toHaveTextContent('Learn More (1)')
+    const ctaButton = screen.getByRole('button', { name: /Assess Your AI Readiness/i })
+    ctaButton.click()
 
-    fireEvent.click(button)
-    expect(button).toHaveTextContent('Learn More (2)')
+    expect(consoleSpy).toHaveBeenCalledWith('Assess Your AI Readiness clicked')
+    consoleSpy.mockRestore()
   })
 })
