@@ -15,9 +15,9 @@ describe('Approach', () => {
 
   it('renders the three essential elements', () => {
     render(<Approach />)
-    expect(screen.getByRole('heading', { name: /Top-Down/i })).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: /Bottom-Up/i })).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: /Governed Democratization/i })).toBeInTheDocument()
+    expect(screen.getByText(/CEO-Level Strategic Commitment/i)).toBeInTheDocument()
+    expect(screen.getByText(/Individual Capability Building/i)).toBeInTheDocument()
+    expect(screen.getByText(/Governed Democratization/i)).toBeInTheDocument()
   })
 
   it('renders timeline information', () => {
@@ -28,7 +28,7 @@ describe('Approach', () => {
 
   it('renders team size guidance', () => {
     render(<Approach />)
-    expect(screen.getByText(/5-20 person teams/i)).toBeInTheDocument()
+    expect(screen.getByText(/focused team of 5-20 people/i)).toBeInTheDocument()
   })
 
   it('references lean manufacturing analogy', () => {

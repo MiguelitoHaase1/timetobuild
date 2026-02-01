@@ -8,9 +8,10 @@ describe('Hero', () => {
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/This is a CEO conversation/i)
   })
 
-  it('renders the tagline', () => {
+  it('renders the personal branding', () => {
     render(<Hero />)
-    expect(screen.getByText(/AI Empowerment consulting/i)).toBeInTheDocument()
+    expect(screen.getByText(/Michael Haase/i)).toBeInTheDocument()
+    expect(screen.getByText(/michael@timetobuild.ai/i)).toBeInTheDocument()
   })
 
   it('renders the CTA button', () => {

@@ -1,4 +1,4 @@
-import { Hero, Shift, Proof, Approach, AssessmentSection } from './components/sections'
+import { Hero, Shift, Approach, AssessmentSection, Proof } from './components/sections'
 
 function App() {
   const handleCTAClick = () => {
@@ -12,9 +12,9 @@ function App() {
     <div className="min-h-screen">
       <Hero onCTAClick={handleCTAClick} />
       <Shift />
-      <Proof />
       <Approach />
       <AssessmentSection />
+      <Proof />
     </div>
   )
 }

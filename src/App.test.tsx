@@ -15,7 +15,7 @@ describe('App', () => {
 
   it('renders the Proof section', () => {
     render(<App />)
-    expect(screen.getByRole('heading', { level: 2, name: /The Proof/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 2, name: /Voices from the Field/i })).toBeInTheDocument()
   })
 
   it('renders the Approach section', () => {
