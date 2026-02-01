@@ -17,28 +17,28 @@ export function Shift() {
             The bottleneck shifts from <em>doing</em> to <em>deciding</em>. When execution is 10x faster, the constraint becomes: what should we build? Which problems matter most?
           </p>
 
-          <p>
-            What anyone can build today:
-          </p>
+          <h3 className="text-xl font-serif font-semibold text-text-primary mt-8 mb-6">
+            What Anyone Can Build Today:
+          </h3>
 
-          <ul className="space-y-3 ml-6">
-            <li className="flex items-start">
-              <span className="text-coral mr-3">•</span>
-              <span>Presentations and reports with sophisticated data analysis</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-coral mr-3">•</span>
-              <span>Custom apps deployed to production</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-coral mr-3">•</span>
-              <span>Cognitive analysis across hundreds of documents</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-coral mr-3">•</span>
-              <span>Automated workflows replacing manual steps</span>
-            </li>
-          </ul>
+          <div className="grid md:grid-cols-2 gap-4">
+            <div className="panel bg-white">
+              <p className="font-semibold text-coral mb-2">📊 Presentations & Reports</p>
+              <p className="text-small text-text-secondary">Sophisticated data analysis, visualizations</p>
+            </div>
+            <div className="panel bg-white">
+              <p className="font-semibold text-coral mb-2">🚀 Custom Apps</p>
+              <p className="text-small text-text-secondary">Deployed to production, fully functional</p>
+            </div>
+            <div className="panel bg-white">
+              <p className="font-semibold text-coral mb-2">📚 Document Analysis</p>
+              <p className="text-small text-text-secondary">Cognitive analysis across hundreds of docs</p>
+            </div>
+            <div className="panel bg-white">
+              <p className="font-semibold text-coral mb-2">⚡ Automated Workflows</p>
+              <p className="text-small text-text-secondary">Replacing manual, multi-step processes</p>
+            </div>
+          </div>
 
           <p className="text-center italic pt-6">
             "The future is already here. It just isn't evenly distributed yet."

@@ -61,14 +61,14 @@ export function AssessmentResults({ result, onEmailSubmit }: AssessmentResultsPr
       {/* Email Capture */}
       {!isSubmitted ? (
         <Card>
-          <h3 className="text-xl font-serif mb-4">Get Your Detailed Report</h3>
+          <h3 className="text-xl font-serif mb-4">Discuss Running a Pilot</h3>
           <p className="text-text-secondary mb-6">
-            Enter your email to receive a comprehensive AI readiness report with specific recommendations for your organization.
+            Send your results to Michael Haase at timetobuild.ai to discuss the prospect of running a pilot transformation with your team.
           </p>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-text-primary mb-2">
-                Email Address
+                Your Email Address
               </label>
               <input
                 type="email"
@@ -81,15 +81,15 @@ export function AssessmentResults({ result, onEmailSubmit }: AssessmentResultsPr
               />
             </div>
             <Button type="submit" className="w-full">
-              Get Detailed Report
+              Send Report to Michael
             </Button>
           </form>
         </Card>
       ) : (
         <Card className="text-center bg-coral-light">
-          <h3 className="text-xl font-serif text-coral mb-2">Report Sent!</h3>
+          <h3 className="text-xl font-serif text-coral mb-2">Report Sent to Michael!</h3>
           <p className="text-text-secondary">
-            Check your inbox for your personalized AI readiness report.
+            Michael will review your pilot team profile and reach out to discuss next steps.
           </p>
         </Card>
       )}

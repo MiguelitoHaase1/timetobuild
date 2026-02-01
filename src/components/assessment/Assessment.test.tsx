@@ -5,7 +5,7 @@ import { Assessment } from './Assessment'
 describe('Assessment', () => {
   it('renders the first question on mount', () => {
     render(<Assessment />)
-    expect(screen.getByText(/What is your current level of AI tool usage/i)).toBeInTheDocument()
+    expect(screen.getByText(/Which team in your organization is most open to trying new approaches/i)).toBeInTheDocument()
   })
 
   it('shows progress indicator', () => {

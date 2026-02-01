@@ -25,7 +25,7 @@ describe('AssessmentResults', () => {
   it('renders email capture form', () => {
     render(<AssessmentResults result={mockResult} onEmailSubmit={vi.fn()} />)
     expect(screen.getByLabelText(/email/i)).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: /Get Detailed Report/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /Send Report to Michael/i })).toBeInTheDocument()
   })
 
   it('calls onEmailSubmit when form is submitted with email', () => {
@@ -33,7 +33,7 @@ describe('AssessmentResults', () => {
     render(<AssessmentResults result={mockResult} onEmailSubmit={handleEmailSubmit} />)
 
     const emailInput = screen.getByLabelText(/email/i)
-    const submitButton = screen.getByRole('button', { name: /Get Detailed Report/i })
+    const submitButton = screen.getByRole('button', { name: /Send Report to Michael/i })
 
     fireEvent.change(emailInput, { target: { value: 'test@example.com' } })
     fireEvent.click(submitButton)
@@ -46,7 +46,7 @@ describe('AssessmentResults', () => {
     render(<AssessmentResults result={mockResult} onEmailSubmit={handleEmailSubmit} />)
 
     const emailInput = screen.getByLabelText(/email/i)
-    const submitButton = screen.getByRole('button', { name: /Get Detailed Report/i })
+    const submitButton = screen.getByRole('button', { name: /Send Report to Michael/i })
 
     fireEvent.change(emailInput, { target: { value: 'invalid-email' } })
     fireEvent.click(submitButton)

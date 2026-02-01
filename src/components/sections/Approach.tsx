@@ -1,7 +1,12 @@
 import { SectionHeading } from '../ui/SectionHeading'
 import { Card } from '../ui/Card'
+import { Button } from '../ui/Button'
 
-export function Approach() {
+interface ApproachProps {
+  onAssessmentClick?: () => void
+}
+
+export function Approach({ onAssessmentClick }: ApproachProps) {
   return (
     <section className="py-20 px-6 bg-cream-panel">
       <div className="max-w-4xl mx-auto">
@@ -49,6 +54,26 @@ export function Approach() {
           <p className="text-text-secondary">
             Focused team. Build capability, demonstrate impact, expand.
           </p>
+        </div>
+
+        {onAssessmentClick && (
+          <div className="text-center mt-12">
+            <Button onClick={onAssessmentClick} size="large">
+              Identify Your Pilot Team
+            </Button>
+          </div>
+        )}
+
+        <div className="text-center panel max-w-xl mx-auto mt-12">
+          <p className="text-body text-text-primary mb-3">
+            Want to work with <strong>Michael Haase</strong> to capture these gains for your organization?
+          </p>
+          <p className="text-body text-text-primary">
+            <a href="mailto:michael@timetobuild.ai" className="text-coral hover:underline font-semibold">
+              michael@timetobuild.ai
+            </a>
+          </p>
+          <p className="text-small text-text-muted mt-2">timetobuild.ai</p>
         </div>
       </div>
     </section>

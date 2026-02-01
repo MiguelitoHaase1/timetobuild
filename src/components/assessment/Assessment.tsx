@@ -62,15 +62,15 @@ export function Assessment({ onComplete }: AssessmentProps) {
     if (percentage < 40) {
       level = 'low'
       recommendation =
-        "You're in the early stages of AI adoption. Focus on building executive awareness and identifying quick wins with pilot programs."
+        "Start by identifying a small team (5-10 people) with clear pain points and executive air cover. Focus on one high-visibility problem they can solve in 3-6 months."
     } else if (percentage < 70) {
       level = 'medium'
       recommendation =
-        'You have foundation pieces in place. Prioritize capability building and secure CEO-level commitment to scale beyond pilots.'
+        'You have a promising team identified. Ensure they have autonomy to experiment, hands-on coaching support, and a way to demonstrate results that leadership will notice.'
     } else {
       level = 'high'
       recommendation =
-        "You're well-positioned for transformation. Focus on bottom-up execution with governed democratization to capture the full 10x productivity gain."
+        "You've identified an excellent pilot team. Focus on hands-on capability building with real projects. Let results speak: when others see what this team builds, adoption will accelerate organically."
     }
 
     return { score, maxScore, percentage, level, recommendation }

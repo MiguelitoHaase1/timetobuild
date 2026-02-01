@@ -3,18 +3,21 @@ import { ButtonHTMLAttributes, ReactNode } from 'react'
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode
   variant?: 'primary' | 'secondary'
+  size?: 'medium' | 'large'
 }
 
 export function Button({
   children,
   variant = 'primary',
+  size = 'medium',
   className = '',
   disabled = false,
   onClick,
   ...props
 }: ButtonProps) {
   const variantClass = variant === 'primary' ? 'btn-primary' : 'btn-secondary'
-  const classes = `${variantClass} ${className}`.trim()
+  const sizeClass = size === 'large' ? 'text-lg px-8 py-4' : ''
+  const classes = `${variantClass} ${sizeClass} ${className}`.trim()
 
   return (
     <button

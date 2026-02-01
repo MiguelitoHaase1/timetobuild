@@ -1,20 +1,26 @@
-import { Hero, Shift, Approach, AssessmentSection, Proof } from './components/sections'
+import { useState } from 'react'
+import { Hero, Shift, Approach, Proof } from './components/sections'
+import { AssessmentModal } from './components/assessment/AssessmentModal'
 
 function App() {
-  const handleCTAClick = () => {
-    const assessmentSection = document.getElementById('assessment')
-    if (assessmentSection) {
-      assessmentSection.scrollIntoView({ behavior: 'smooth' })
-    }
+  const [isAssessmentOpen, setIsAssessmentOpen] = useState(false)
+
+  const handleOpenAssessment = () => {
+    setIsAssessmentOpen(true)
+  }
+
+  const handleCloseAssessment = () => {
+    setIsAssessmentOpen(false)
   }
 
   return (
     <div className="min-h-screen">
-      <Hero onCTAClick={handleCTAClick} />
+      <Hero />
       <Shift />
-      <Approach />
-      <AssessmentSection />
+      <Approach onAssessmentClick={handleOpenAssessment} />
       <Proof />
+
+      <AssessmentModal isOpen={isAssessmentOpen} onClose={handleCloseAssessment} />
     </div>
   )
 }
