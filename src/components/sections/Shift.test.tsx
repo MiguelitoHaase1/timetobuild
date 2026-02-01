@@ -8,9 +8,9 @@ describe('Shift', () => {
     expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(/The Shift/i)
   })
 
-  it('renders the 10x gap message', () => {
+  it('renders the days what took weeks message', () => {
     render(<Shift />)
-    expect(screen.getByText(/10x gap/i)).toBeInTheDocument()
+    expect(screen.getByText(/days what took weeks/i)).toBeInTheDocument()
   })
 
   it('renders messaging about knowledge workers', () => {

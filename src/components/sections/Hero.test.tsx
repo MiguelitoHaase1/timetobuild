@@ -5,7 +5,7 @@ import { Hero } from './Hero'
 describe('Hero', () => {
   it('renders the main headline', () => {
     render(<Hero />)
-    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/This is a CEO conversation/i)
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/AI Tools: A CEO Conversation/i)
   })
 
   it('renders the personal branding', () => {
@@ -30,9 +30,9 @@ describe('Hero', () => {
     expect(handleClick).toHaveBeenCalledTimes(1)
   })
 
-  it('renders the subheading about strategic inflection point', () => {
+  it('renders efficiency delta messaging', () => {
     render(<Hero />)
+    expect(screen.getByText(/efficiency delta/i)).toBeInTheDocument()
     expect(screen.getByText(/Not a CIO conversation/i)).toBeInTheDocument()
-    expect(screen.getByText(/strategic inflection point/i)).toBeInTheDocument()
   })
 })

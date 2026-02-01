@@ -15,20 +15,19 @@ describe('Approach', () => {
 
   it('renders the three essential elements', () => {
     render(<Approach />)
-    expect(screen.getByText(/CEO-Level Strategic Commitment/i)).toBeInTheDocument()
+    expect(screen.getByText(/CEO-Level Commitment/i)).toBeInTheDocument()
     expect(screen.getByText(/Individual Capability Building/i)).toBeInTheDocument()
-    expect(screen.getByText(/Governed Democratization/i)).toBeInTheDocument()
+    expect(screen.getByText(/World-Class Tools with Guardrails/i)).toBeInTheDocument()
   })
 
   it('renders timeline information', () => {
     render(<Approach />)
-    expect(screen.getByText(/3-6 months/i)).toBeInTheDocument()
-    expect(screen.getByText(/not years/i)).toBeInTheDocument()
+    expect(screen.getByText(/3-6 Months, Not Years/i)).toBeInTheDocument()
   })
 
   it('renders team size guidance', () => {
     render(<Approach />)
-    expect(screen.getByText(/focused team of 5-20 people/i)).toBeInTheDocument()
+    expect(screen.getByText(/5-20 people/i)).toBeInTheDocument()
   })
 
   it('references lean manufacturing analogy', () => {

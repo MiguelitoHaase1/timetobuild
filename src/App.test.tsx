@@ -5,7 +5,7 @@ import App from './App'
 describe('App', () => {
   it('renders the Hero section', () => {
     render(<App />)
-    expect(screen.getByRole('heading', { level: 1, name: /This is a CEO conversation/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 1, name: /AI Tools: A CEO Conversation/i })).toBeInTheDocument()
   })
 
   it('renders the Shift section', () => {

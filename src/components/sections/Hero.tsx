@@ -8,29 +8,24 @@ interface HeroProps {
 export function Hero({ onCTAClick }: HeroProps) {
   return (
     <section className="min-h-screen flex items-center justify-center px-6 py-12">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
           <SectionHeading level={1} centered className="mb-6">
-            This is a CEO conversation.
+            AI Tools: A CEO Conversation
           </SectionHeading>
 
           <p className="text-xl text-text-secondary mb-8 max-w-3xl mx-auto leading-relaxed">
-            Not a CIO conversation. Not an IT initiative. A strategic inflection point.
+            Not a CIO conversation. Not an IT initiative.
           </p>
 
-          <div className="max-w-3xl mx-auto space-y-6 text-body text-text-secondary leading-relaxed">
-            <p>
-              The 10x gap between best-in-class AI tools and corporate-approved tools isn't an IT efficiency issue—it's a competitive survival issue.
-            </p>
-            <p>
-              When the gap was 10-20%, CIOs owned it. When the gap is 10x, the CEO must own it.
-            </p>
-          </div>
+          <p className="text-body text-text-secondary max-w-3xl mx-auto">
+            The efficiency delta between best-in-class AI tools and corporate-approved tools is now 10x. That's not an IT problem—it's a competitive survival issue.
+          </p>
         </div>
 
         <div className="panel max-w-2xl mx-auto text-center">
           <p className="text-body text-text-primary mb-6">
-            I'm <strong>Michael Haase</strong>, and I help mid-market enterprises implement truly game-changing AI—not vanilla AI deployments, but the kind that delivers 10x productivity gains.
+            I'm <strong>Michael Haase</strong>. I help mid-market companies capture game-changing productivity gains from AI.
           </p>
           <p className="text-small text-text-muted mb-8">
             <a href="mailto:michael@timetobuild.ai" className="text-coral hover:underline">
