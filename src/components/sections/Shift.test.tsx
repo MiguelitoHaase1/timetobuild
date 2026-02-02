@@ -5,24 +5,24 @@ import { Shift } from './Shift'
 describe('Shift', () => {
   it('renders the section heading', () => {
     render(<Shift />)
-    expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(/Examples of what AI can do for your employees/i)
+    expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(/Why it is 'Time To Build'/i)
   })
 
-  it('renders the two testimonials', () => {
+  it('renders the introduction about building', () => {
     render(<Shift />)
-    expect(screen.getByText(/Sam Bowman/i)).toBeInTheDocument()
-    expect(screen.getByText(/Anonymous/i)).toBeInTheDocument()
+    expect(screen.getByText(/they make everyone a builder/i)).toBeInTheDocument()
+    expect(screen.getByText(/increased creativity, employee retention, work quality/i)).toBeInTheDocument()
   })
 
-  it('renders capability examples', () => {
+  it('renders the contact CTA', () => {
     render(<Shift />)
-    expect(screen.getByText(/Presentations & Reports/i)).toBeInTheDocument()
-    expect(screen.getByText(/Custom Apps/i)).toBeInTheDocument()
+    expect(screen.getByText(/Want to know more about/i)).toBeInTheDocument()
+    expect(screen.getByText(/michael@timetobuild.ai/i)).toBeInTheDocument()
+    expect(screen.getByText(/Michael likes coffee/i)).toBeInTheDocument()
   })
 
-  it('renders the William Gibson quote', () => {
+  it('renders the Meet the Team button', () => {
     render(<Shift />)
-    expect(screen.getByText(/The future is already here/i)).toBeInTheDocument()
-    expect(screen.getByText(/evenly distributed/i)).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /Meet the Team/i })).toBeInTheDocument()
   })
 })

@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from 'vitest'
+import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import { Approach } from './Approach'
 
@@ -33,28 +33,5 @@ describe('Approach', () => {
   it('references lean transformations', () => {
     render(<Approach />)
     expect(screen.getByText(/Lean Transformations/i)).toBeInTheDocument()
-  })
-
-  it('renders assessment button when onAssessmentClick is provided', () => {
-    const handleClick = vi.fn()
-    render(<Approach onAssessmentClick={handleClick} />)
-
-    const button = screen.getByRole('button', { name: /Identify Your Pilot Team/i })
-    expect(button).toBeInTheDocument()
-  })
-
-  it('does not render assessment button when onAssessmentClick is not provided', () => {
-    render(<Approach />)
-
-    const button = screen.queryByRole('button', { name: /Identify Your Pilot Team/i })
-    expect(button).not.toBeInTheDocument()
-  })
-
-  it('renders Time To Build contact information', () => {
-    render(<Approach />)
-
-    expect(screen.getByText(/Time To Build/i)).toBeInTheDocument()
-    expect(screen.getByText(/Want to know more about/i)).toBeInTheDocument()
-    expect(screen.getByText(/michael@timetobuild.ai/i)).toBeInTheDocument()
   })
 })

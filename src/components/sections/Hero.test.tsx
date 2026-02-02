@@ -5,12 +5,12 @@ import { Hero } from './Hero'
 describe('Hero', () => {
   it('renders the main headline', () => {
     render(<Hero />)
-    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/It's Time to Build/i)
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/How is your AI?/i)
   })
 
-  it('renders CEO decision messaging', () => {
+  it('renders AI transformation messaging', () => {
     render(<Hero />)
-    expect(screen.getByText(/needs to be managed by the CEO/i)).toBeInTheDocument()
+    expect(screen.getByText(/AI enablement of your workforce is not an IT project/i)).toBeInTheDocument()
   })
 
   it('renders 10x engagement and efficiency message', () => {
@@ -24,5 +24,6 @@ describe('Hero', () => {
     const timeToBuildRefs = screen.getAllByText(/Time To Build/i)
     expect(timeToBuildRefs.length).toBeGreaterThan(0)
     expect(screen.getByText(/michael@timetobuild.ai/i)).toBeInTheDocument()
+    expect(screen.getByText(/Michael likes coffee/i)).toBeInTheDocument()
   })
 })

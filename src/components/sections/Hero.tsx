@@ -1,5 +1,6 @@
 import { SectionHeading } from '../ui/SectionHeading'
-import { hero, contact } from '@/content'
+import { ContactCTA } from '../ui/ContactCTA'
+import { hero } from '@/content'
 
 export function Hero() {
   return (
@@ -20,14 +21,7 @@ export function Hero() {
             {hero.callout}
           </p>
 
-          <div className="panel max-w-xl mx-auto">
-            <p className="text-body text-text-primary">
-              Want to know more about <strong>Time To Build</strong>? Write{' '}
-              <a href={`mailto:${contact.email}`} className="text-coral hover:underline font-semibold">
-                {contact.email}
-              </a>
-            </p>
-          </div>
+          <ContactCTA />
         </div>
       </div>
     </section>

@@ -1,8 +1,9 @@
 export const hero = {
-  heading: "It's Time to Build",
+  heading: "How is your AI?",
   paragraphs: [
-    "Want to go beyond fluffy AI mission statements, co-pilot, a few 'meh' AI pilots, and a hail mary AI platform that'll likely never materialize?",
-    "AI is not just another IT initiative - The right AI tooling and skills can increase employee engagement and efficiency by 10X - so it needs to be managed by the CEO.",
+    "Your company probably has a fluffy AI mission statement, access to co-pilot, and initiated a big monolithic AI platform bet.",
+    "However, to succeed with AI you need to think different. The whole organization needs to think different. AI enablement of your workforce is not an IT project.",
+    "The good news: The right AI tools, skills, and mindsets can increase employee engagement and efficiency by 10X within a few months",
   ],
-  callout: "'Time To Build' onboards your organization to best-of-breed AI tools and then coaches your employees to ensure a succesful AI transformation of your workforce.",
+  callout: "'Time To Build' is a consultancy that onboards your organization to best-of-breed AI tools and then coaches your employees to ensure a succesful AI transformation of your workforce.",
 } as const;
