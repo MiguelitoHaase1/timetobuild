@@ -5,13 +5,13 @@ import { Examples } from './Examples'
 describe('Examples', () => {
   it('renders the section heading', () => {
     render(<Examples />)
-    expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(/Examples of AI empowered employees/i)
+    expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(/Impact/i)
   })
 
   it('renders the introduction text', () => {
     render(<Examples />)
-    expect(screen.getByText(/Are you wondering what an AI empowered employee looks like/i)).toBeInTheDocument()
-    expect(screen.getByText(/tip of the iceberg/i)).toBeInTheDocument()
+    expect(screen.getByText(/expect the CEO to be convinced and excited within a few weeks/i)).toBeInTheDocument()
+    expect(screen.getByText(/The leading indicator of success will be 'Employee Engagement'/i)).toBeInTheDocument()
   })
 
   it('renders capability examples', () => {

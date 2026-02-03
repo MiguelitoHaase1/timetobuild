@@ -20,11 +20,6 @@ describe('Approach', () => {
     expect(screen.getByText(/Train-the-trainer/i)).toBeInTheDocument()
   })
 
-  it('renders timeline information', () => {
-    render(<Approach />)
-    expect(screen.getByText(/3-6 Months, Not Years/i)).toBeInTheDocument()
-  })
-
   it('renders team size guidance', () => {
     render(<Approach />)
     expect(screen.getByText(/5-20 people/i)).toBeInTheDocument()

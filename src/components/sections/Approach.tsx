@@ -42,15 +42,6 @@ export function Approach() {
             </p>
           </Card>
         </div>
-
-        <div className="panel text-center">
-          <h3 className="text-lg font-serif font-semibold text-text-primary mb-2">
-            {approach.timeline.heading}
-          </h3>
-          <p className="text-text-secondary text-small">
-            {approach.timeline.description}
-          </p>
-        </div>
       </div>
     </section>
   )

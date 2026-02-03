@@ -21,9 +21,11 @@ export function Examples() {
           {impact.heading}
         </SectionHeading>
 
-        <p className="text-lg text-text-primary text-center max-w-3xl mx-auto mb-12">
-          {impact.introduction}
-        </p>
+        <div className="text-lg text-text-primary text-center max-w-3xl mx-auto mb-12 space-y-4">
+          {impact.introduction.map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
+          ))}
+        </div>
 
         <div className="space-y-8">
           {/* What people build section */}

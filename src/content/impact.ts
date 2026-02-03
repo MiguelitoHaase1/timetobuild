@@ -1,6 +1,9 @@
 export const impact = {
-  heading: "Examples of AI empowered employees",
-  introduction: "Are you wondering what an AI empowered employee looks like? Let me finish off with a few quotes of AI empowered employees and examples of what they built. This should provide an understanding of the unit of value you'll be creating, but please notice it's just the tip of the iceberg. Any team in any domain will optimize their individual workflow in just the way they need, if we empower them with the right tools.",
+  heading: "Impact",
+  introduction: [
+    "With this approach, expect the CEO to be convinced and excited within a few weeks, expect employee engagement in pilot teams to rise by 30-50% within 1 month, and see real efficiency improvements within 1 quarter.",
+    "The leading indicator of success will be 'Employee Engagement' - expect to see behavior like this:",
+  ],
 
   capabilitiesHeading: "What non-coders build with AI:",
   capabilities: [

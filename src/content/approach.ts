@@ -1,6 +1,6 @@
 export const approach = {
   heading: "Our Approach",
-  subheading: "We do not build our own AI products. Rather, we help your organization integrate existing world class products in your employees' existing workflows. We do it in 3 stages:",
+  subheading: "We do not build our own AI products. Rather, we help your organization integrate existing world class products in your employees' existing workflows. We do it in 3 stages, inspired by McKinsey, BCG, Bain's Playbook for 'Lean Transformations' in the 2000's:",
 
   cards: [
     {
@@ -19,11 +19,6 @@ export const approach = {
       description: "After the CEO, we start with a few pilot teams (5-20 people). We deliver hands-on coaching on bringing AI to the teams' workflows. Next, capability spreads through demonstration: \"I saw what Sarah built and I want to do that.\"",
     },
   ],
-
-  timeline: {
-    heading: "3-6 Months, Not Years",
-    description: "This 3 stage playbook is a stolen blueprint from 'Lean Transformations' done by McKinsey, BCG, and Bain in the 2000's. It works - and with a little nurturing, it will grow exponentially through your organization after stage 3.",
-  },
 
   assessmentCta: "Identify Your Pilot Team",
 } as const;
