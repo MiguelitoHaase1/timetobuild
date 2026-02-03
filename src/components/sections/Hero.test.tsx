@@ -13,9 +13,9 @@ describe('Hero', () => {
     expect(screen.getByText(/AI enablement of your workforce is not an IT project/i)).toBeInTheDocument()
   })
 
-  it('renders 10x engagement and efficiency message', () => {
+  it('renders consultancy callout', () => {
     render(<Hero />)
-    expect(screen.getByText(/increase employee engagement and efficiency by 10X/i)).toBeInTheDocument()
+    expect(screen.getByText(/coaches your employees to ensure a succesful AI transformation/i)).toBeInTheDocument()
   })
 
   it('renders contact CTA', () => {

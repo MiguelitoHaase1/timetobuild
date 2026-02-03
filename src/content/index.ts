@@ -4,3 +4,4 @@ export * from './shift';
 export * from './approach';
 export * from './proof';
 export * from './assessment';
+export * from './impact';
