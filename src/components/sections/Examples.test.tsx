@@ -11,7 +11,7 @@ describe('Examples', () => {
   it('renders the introduction text', () => {
     render(<Examples />)
     expect(screen.getByText(/expect the CEO to be convinced and excited within a few weeks/i)).toBeInTheDocument()
-    expect(screen.getByText(/The leading indicator of success will be 'Employee Engagement'/i)).toBeInTheDocument()
+    expect(screen.getByText(/The leading indicator of a successful AI transformation is sky rocketing 'Employee Engagement'/i)).toBeInTheDocument()
   })
 
   it('renders capability examples', () => {
@@ -26,10 +26,17 @@ describe('Examples', () => {
     expect(buttons).toHaveLength(4)
   })
 
-  it('renders power user quotes', () => {
+  it('renders power user quotes with attribution', () => {
     render(<Examples />)
     expect(screen.getByText(/zero coding experience/i)).toBeInTheDocument()
     expect(screen.getByText(/month of work in 3 days/i)).toBeInTheDocument()
+    expect(screen.getByText(/Sam Bowman/i)).toBeInTheDocument()
+    expect(screen.getByText(/Allan/i)).toBeInTheDocument()
+  })
+
+  it('renders see more stories button', () => {
+    render(<Examples />)
+    expect(screen.getByRole('button', { name: /See more stories/i })).toBeInTheDocument()
   })
 
   it('renders the leading indicators message', () => {

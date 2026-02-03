@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { SectionHeading } from '../ui/SectionHeading'
 import { DemoModal } from '../ui/DemoModal'
+import { QuotesModal } from '../ui/QuotesModal'
 import { impact } from '@/content'
 
 export function Examples() {
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
+  const [isQuotesModalOpen, setIsQuotesModalOpen] = useState(false)
 
   const handleOpenDemo = () => {
     setIsDemoModalOpen(true)
@@ -52,11 +54,27 @@ export function Examples() {
 
           {/* Power user quotes */}
           <div className="space-y-6">
-            {impact.powerUserQuotes.map((quote, index) => (
-              <blockquote key={index} className="border-l-4 border-coral pl-6 py-2 italic text-lg text-text-primary">
-                "{quote}"
-              </blockquote>
+            {impact.powerUserQuotes.map((item, index) => (
+              <div key={index} className="panel bg-white">
+                <blockquote className="italic text-lg text-text-primary mb-4">
+                  "{item.quote}"
+                </blockquote>
+                <div className="text-small">
+                  <div className="font-semibold text-text-primary">{item.author}</div>
+                  <div className="text-text-muted">{item.role} • {item.source}</div>
+                </div>
+              </div>
             ))}
+
+            {/* See more button */}
+            <div className="text-center">
+              <button
+                onClick={() => setIsQuotesModalOpen(true)}
+                className="text-coral hover:underline font-semibold"
+              >
+                See more stories →
+              </button>
+            </div>
           </div>
 
           {/* Leading indicators section */}
@@ -76,6 +94,7 @@ export function Examples() {
       </div>
 
       <DemoModal isOpen={isDemoModalOpen} onClose={handleCloseDemo} />
+      <QuotesModal isOpen={isQuotesModalOpen} onClose={() => setIsQuotesModalOpen(false)} />
     </section>
   )
 }
