@@ -10,16 +10,16 @@ export function Hero() {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: 'url(/hero.png)',
-          backgroundPosition: 'center center',
+          backgroundPosition: 'center 30%',
         }}
       />
 
-      {/* Overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-cream/75 via-cream/85 to-cream/75" />
+      {/* Overlay for text readability - lighter to show image */}
+      <div className="absolute inset-0 bg-gradient-to-b from-cream/40 via-cream/50 to-cream/70" />
 
       {/* Content */}
       <div className="relative z-10 max-w-5xl mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16" style={{ textShadow: '0 1px 3px rgba(255,255,255,0.8)' }}>
           <SectionHeading level={1} centered className="mb-8">
             {hero.heading}
           </SectionHeading>
