@@ -4,8 +4,21 @@ import { hero } from '@/content'
 
 export function Hero() {
   return (
-    <section className="min-h-screen flex items-center justify-center px-6 py-12">
-      <div className="max-w-5xl mx-auto">
+    <section className="relative min-h-screen flex items-center justify-center px-6 py-12 overflow-hidden">
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: 'url(/hero.png)',
+          backgroundPosition: 'center center',
+        }}
+      />
+
+      {/* Overlay for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-cream/75 via-cream/85 to-cream/75" />
+
+      {/* Content */}
+      <div className="relative z-10 max-w-5xl mx-auto">
         <div className="text-center mb-16">
           <SectionHeading level={1} centered className="mb-8">
             {hero.heading}

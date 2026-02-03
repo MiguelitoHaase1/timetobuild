@@ -6,36 +6,50 @@ interface TeamModalProps {
   onClose: () => void
 }
 
-const teamMembers = [
+interface TeamMember {
+  name: string
+  role: string
+  description: string
+  isHuman: boolean
+  image?: string
+  isOpen?: boolean
+}
+
+const teamMembers: TeamMember[] = [
   {
     name: 'Michael Haase',
     role: 'Founder & AI Enablement Consultant',
     description: 'VP Product at Jabra. Former Senior Director at Novo Nordisk, McKinsey Project Manager, and founder of Plant Jammer (AI food startup, €5mn raised). MSc Econometrics from LSE. Now helping companies unlock 10x productivity through AI empowerment.',
     isHuman: true,
+    image: '/michael-haase.jpg',
   },
   {
     name: 'Claus',
     role: 'Problem Solver & System Architect',
     description: 'Trained on millions of GitHub repositories, Stack Overflow discussions, and technical documentation. Debugs complex multi-service architectures, traces issues across 10+ interconnected systems. MCP: GitHub integration for PR analysis. Skills: Feature Development, System Design, Root Cause Analysis.',
     isHuman: false,
+    image: '/claus.png',
   },
   {
     name: 'Claudio',
     role: 'Code Reviewer & Security Auditor',
     description: 'Trained on OWASP Top 10, CVE databases, and enterprise codebases. Reviews 1000+ line PRs in seconds, catches SQL injection, XSS, and authentication flaws before they reach production. MCP: Git history analysis. Skills: Security Review, Performance Optimization, Tech Debt Detection.',
     isHuman: false,
+    image: '/claudio.png',
   },
   {
     name: 'Claudia',
     role: 'Full-Stack Developer',
     description: 'Trained on React, TypeScript, Python, Node.js, and 50+ frameworks. Builds production apps from scratch—authentication, databases, APIs, testing. Deployed 100+ features across finance, healthcare, and e-commerce. MCP: Vercel, Supabase, Playwright. Skills: End-to-End Testing, CI/CD, Database Design.',
     isHuman: false,
+    image: '/claudia.png',
   },
   {
     name: 'Claudieta',
     role: 'Microsoft 365 & Document Expert',
     description: 'Trained on millions of corporate presentations, financial models, and professional documents. Generates boardroom-ready PowerPoints with data visualizations, complex Excel models with pivot tables and macros, polished PDFs and Word docs. Skills: XLSX/DOCX/PPTX/PDF manipulation, Data Analysis, Visual Design.',
     isHuman: false,
+    image: '/claudieta.png',
   },
   {
     name: 'Open Position',
@@ -69,19 +83,19 @@ export function TeamModal({ isOpen, onClose }: TeamModalProps) {
             >
               {/* Avatar */}
               <div className="mb-4 flex justify-center">
-                {member.isHuman ? (
+                {member.isOpen ? (
+                  <div className="w-20 h-20 rounded-full flex items-center justify-center text-3xl bg-cream-panel border-2 border-dashed border-coral">
+                    ❓
+                  </div>
+                ) : member.image ? (
                   <img
-                    src="/michael-haase.jpg"
-                    alt="Michael Haase"
+                    src={member.image}
+                    alt={member.name}
                     className="w-20 h-20 rounded-full object-cover"
                   />
                 ) : (
-                  <div className={`w-20 h-20 rounded-full flex items-center justify-center text-3xl ${
-                    member.isOpen
-                      ? 'bg-cream-panel border-2 border-dashed border-coral'
-                      : 'bg-gradient-to-br from-coral to-orange-400 text-white'
-                  }`}>
-                    {member.isOpen ? '❓' : '🤖'}
+                  <div className="w-20 h-20 rounded-full flex items-center justify-center text-3xl bg-gradient-to-br from-coral to-orange-400 text-white">
+                    🤖
                   </div>
                 )}
               </div>
