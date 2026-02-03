@@ -68,17 +68,23 @@ export function TeamModal({ isOpen, onClose }: TeamModalProps) {
               key={index}
               className={`panel ${member.isOpen ? 'border-2 border-dashed border-coral' : 'bg-white'}`}
             >
-              {/* Avatar placeholder */}
+              {/* Avatar */}
               <div className="mb-4 flex justify-center">
-                <div className={`w-20 h-20 rounded-full flex items-center justify-center text-3xl ${
-                  member.isHuman
-                    ? 'bg-coral text-white'
-                    : member.isOpen
+                {member.isHuman ? (
+                  <img
+                    src="/michael-haase.jpg"
+                    alt="Michael Haase"
+                    className="w-20 h-20 rounded-full object-cover"
+                  />
+                ) : (
+                  <div className={`w-20 h-20 rounded-full flex items-center justify-center text-3xl ${
+                    member.isOpen
                       ? 'bg-cream-panel border-2 border-dashed border-coral'
                       : 'bg-gradient-to-br from-coral to-orange-400 text-white'
-                }`}>
-                  {member.isHuman ? '👨‍💼' : member.isOpen ? '❓' : '🤖'}
-                </div>
+                  }`}>
+                    {member.isOpen ? '❓' : '🤖'}
+                  </div>
+                )}
               </div>
 
               <h3 className="text-lg font-serif font-semibold text-text-primary text-center mb-1">
