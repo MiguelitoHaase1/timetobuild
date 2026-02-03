@@ -1,12 +1,27 @@
 import { useState } from 'react'
 import { SectionHeading } from '../ui/SectionHeading'
 import { DemoModal } from '../ui/DemoModal'
-import { QuotesModal } from '../ui/QuotesModal'
 import { impact } from '@/content'
+
+// Map each quote to relevant capability indices
+const quoteCapabilityMap: Record<number, number[]> = {
+  0: [1, 3], // Sam Bowman: Custom Apps, Automated Workflows
+  1: [0, 2], // Anonymous NN: Presentations & Reports, Document Analysis
+  2: [0, 2], // Sam Bowman (itinerary): Presentations & Reports, Document Analysis
+  3: [1, 3], // Teresa Torres: Custom Apps, Automated Workflows
+  4: [1, 2], // Anushki: Custom Apps, Document Analysis
+  5: [2, 3], // Meeting recordings: Document Analysis, Automated Workflows
+  6: [0, 2], // PMs context: Presentations & Reports, Document Analysis
+  7: [1, 3], // Lenny: Custom Apps, Automated Workflows
+  8: [0, 1], // Aakash: Presentations & Reports, Custom Apps
+}
 
 export function Examples() {
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
-  const [isQuotesModalOpen, setIsQuotesModalOpen] = useState(false)
+  const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0)
+
+  // Combine all quotes into one array
+  const allQuotes = [...impact.powerUserQuotes, ...impact.additionalQuotes]
 
   const handleOpenDemo = () => {
     setIsDemoModalOpen(true)
@@ -16,6 +31,19 @@ export function Examples() {
     setIsDemoModalOpen(false)
   }
 
+  const nextQuote = () => {
+    setCurrentQuoteIndex((prev) => (prev + 1) % allQuotes.length)
+  }
+
+  const prevQuote = () => {
+    setCurrentQuoteIndex((prev) => (prev - 1 + allQuotes.length) % allQuotes.length)
+  }
+
+  const currentQuote = allQuotes[currentQuoteIndex]
+  const relevantCapabilities = (quoteCapabilityMap[currentQuoteIndex] || [0, 1]).map(
+    index => impact.capabilities[index]
+  )
+
   return (
     <section className="py-20 px-6">
       <div className="max-w-4xl mx-auto">
@@ -23,78 +51,81 @@ export function Examples() {
           {impact.heading}
         </SectionHeading>
 
+        {/* Introduction paragraphs */}
         <div className="text-lg text-text-primary text-center max-w-3xl mx-auto mb-12 space-y-4">
           {impact.introduction.map((paragraph, index) => (
             <p key={index}>{paragraph}</p>
           ))}
         </div>
 
-        <div className="space-y-8">
-          {/* What people build section */}
-          <div>
-            <h3 className="text-xl font-serif font-semibold text-text-primary mb-6 text-center">
-              {impact.capabilitiesHeading}
-            </h3>
+        {/* Quote Carousel - with box around it */}
+        <div className="mb-12">
+          <div className="max-w-3xl mx-auto panel bg-white">
+            {/* Quote with smaller font */}
+            <blockquote className="text-xl md:text-2xl font-serif text-text-primary leading-relaxed text-center mb-6">
+              "{currentQuote.quote}"
+            </blockquote>
+            <div className="text-center text-text-secondary mb-8">
+              <div className="font-semibold text-text-primary">{currentQuote.author}</div>
+              <div className="text-small text-text-muted">{currentQuote.role} • {currentQuote.source}</div>
+            </div>
 
-            <div className="grid md:grid-cols-2 gap-4">
-              {impact.capabilities.map((capability, index) => (
-                <div key={index} className="panel bg-white">
-                  <p className="font-semibold text-coral mb-2">{capability.icon} {capability.title}</p>
-                  <p className="text-small text-text-secondary mb-3">{capability.description}</p>
-                  <button
-                    onClick={handleOpenDemo}
-                    className="text-small text-coral hover:underline font-semibold"
-                  >
-                    See Example →
-                  </button>
-                </div>
+            {/* Divider between quote and artifacts */}
+            <div className="border-t border-cream-panel my-6"></div>
+
+            {/* Relevant capabilities - clickable cards */}
+            <div className="grid grid-cols-2 gap-4 mb-8">
+              {relevantCapabilities.map((capability, index) => (
+                <button
+                  key={index}
+                  onClick={handleOpenDemo}
+                  className="panel bg-cream-panel hover:bg-cream hover:shadow-md transition-all duration-200 cursor-pointer border-2 border-transparent hover:border-coral text-center group"
+                >
+                  <div className="text-4xl mb-2 group-hover:scale-110 transition-transform">{capability.icon}</div>
+                  <div className="font-semibold text-sm text-text-primary mb-1 group-hover:text-coral transition-colors">
+                    {capability.title}
+                  </div>
+                  <div className="text-xs text-text-secondary">{capability.description}</div>
+                </button>
               ))}
             </div>
-          </div>
 
-          {/* Power user quotes */}
-          <div className="space-y-6">
-            {impact.powerUserQuotes.map((item, index) => (
-              <div key={index} className="panel bg-white">
-                <blockquote className="italic text-lg text-text-primary mb-4">
-                  "{item.quote}"
-                </blockquote>
-                <div className="text-small">
-                  <div className="font-semibold text-text-primary">{item.author}</div>
-                  <div className="text-text-muted">{item.role} • {item.source}</div>
-                </div>
-              </div>
-            ))}
-
-            {/* See more button */}
-            <div className="text-center">
+            {/* Carousel controls */}
+            <div className="flex items-center justify-center gap-6 pt-4 border-t border-cream-panel">
               <button
-                onClick={() => setIsQuotesModalOpen(true)}
+                onClick={prevQuote}
                 className="text-coral hover:underline font-semibold"
+                aria-label="Previous quote"
               >
-                See more stories →
+                ← Previous
+              </button>
+              <span className="text-text-muted text-sm">
+                {currentQuoteIndex + 1} of {allQuotes.length}
+              </span>
+              <button
+                onClick={nextQuote}
+                className="text-coral hover:underline font-semibold"
+                aria-label="Next quote"
+              >
+                Next →
               </button>
             </div>
           </div>
+        </div>
 
-          {/* Leading indicators section */}
-          <div className="pt-8">
-            <div className="panel bg-white max-w-3xl mx-auto">
-              <p className="text-body text-text-secondary leading-relaxed text-center mb-4">
-                {impact.leadingIndicators.heading}
-              </p>
+        {/* Divider */}
+        <div className="border-t border-cream-panel my-12"></div>
 
-              <p className="text-center italic text-xl text-text-primary border-t border-cream-panel pt-4">
-                "{impact.leadingIndicators.quote}"
-                <span className="block text-small text-text-muted mt-2">— {impact.leadingIndicators.quoteAuthor}</span>
-              </p>
-            </div>
-          </div>
+        {/* Gibson quote */}
+        <div className="text-center">
+          <p className="text-xl italic text-text-primary mb-2">
+            "{impact.leadingIndicators.quote}"
+          </p>
+          <p className="text-small text-text-muted">— {impact.leadingIndicators.quoteAuthor}</p>
         </div>
       </div>
 
       <DemoModal isOpen={isDemoModalOpen} onClose={handleCloseDemo} />
-      <QuotesModal isOpen={isQuotesModalOpen} onClose={() => setIsQuotesModalOpen(false)} />
     </section>
   )
 }
