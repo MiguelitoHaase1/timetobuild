@@ -38,8 +38,8 @@ export const impact = {
     },
     {
       quote: "Did a month of work in 3 days. The disorientation isn't from the workload—it's from decision fatigue. When execution is instant, the bottleneck becomes 'what do I actually want?'",
-      author: "Allan",
-      role: "Product Manager, Jabra",
+      author: "Anonymous",
+      role: "Product Manager, Novo Nordisk",
       source: "December 2025",
     },
   ],

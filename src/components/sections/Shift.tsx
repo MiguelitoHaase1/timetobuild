@@ -9,7 +9,7 @@ export function Shift() {
   const [isTeamModalOpen, setIsTeamModalOpen] = useState(false)
 
   return (
-    <section className="py-20 px-6">
+    <section className="py-20 px-6 bg-cream-panel">
       <div className="max-w-4xl mx-auto">
         <SectionHeading level={2} centered className="mb-12">
           {shift.heading}

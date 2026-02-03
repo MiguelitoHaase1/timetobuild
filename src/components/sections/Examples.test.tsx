@@ -31,7 +31,7 @@ describe('Examples', () => {
     expect(screen.getByText(/zero coding experience/i)).toBeInTheDocument()
     expect(screen.getByText(/month of work in 3 days/i)).toBeInTheDocument()
     expect(screen.getByText(/Sam Bowman/i)).toBeInTheDocument()
-    expect(screen.getByText(/Allan/i)).toBeInTheDocument()
+    expect(screen.getByText(/Anonymous/i)).toBeInTheDocument()
   })
 
   it('renders see more stories button', () => {
