@@ -58,8 +58,29 @@ export function Examples() {
           ))}
         </div>
 
-        {/* Quote Carousel - with box around it */}
-        <div className="mb-12">
+        {/* Quote Carousel - with box around it and peek navigation */}
+        <div className="mb-12 relative">
+          {/* Carousel controls at top (mobile and desktop) */}
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <button
+              onClick={prevQuote}
+              className="text-coral hover:underline font-semibold"
+              aria-label="Previous quote"
+            >
+              ← Previous
+            </button>
+            <span className="text-text-muted text-sm">
+              {currentQuoteIndex + 1} of {allQuotes.length}
+            </span>
+            <button
+              onClick={nextQuote}
+              className="text-coral hover:underline font-semibold"
+              aria-label="Next quote"
+            >
+              Next →
+            </button>
+          </div>
+
           <div className="max-w-3xl mx-auto panel bg-white">
             {/* Quote with smaller font */}
             <blockquote className="text-xl md:text-2xl font-serif text-text-primary leading-relaxed text-center mb-6">
@@ -73,8 +94,8 @@ export function Examples() {
             {/* Divider between quote and artifacts */}
             <div className="border-t border-cream-panel my-6"></div>
 
-            {/* Relevant capabilities - clickable cards */}
-            <div className="grid grid-cols-2 gap-4 mb-8">
+            {/* Relevant capabilities - clickable cards with hidden description on mobile */}
+            <div className="grid grid-cols-2 gap-4 mb-6">
               {relevantCapabilities.map((capability, index) => (
                 <button
                   key={index}
@@ -85,32 +106,32 @@ export function Examples() {
                   <div className="font-semibold text-sm text-text-primary mb-1 group-hover:text-coral transition-colors">
                     {capability.title}
                   </div>
-                  <div className="text-xs text-text-secondary">{capability.description}</div>
+                  {/* Hide description on mobile to save space */}
+                  <div className="text-xs text-text-secondary hidden md:block">{capability.description}</div>
                 </button>
               ))}
             </div>
-
-            {/* Carousel controls */}
-            <div className="flex items-center justify-center gap-6 pt-4 border-t border-cream-panel">
-              <button
-                onClick={prevQuote}
-                className="text-coral hover:underline font-semibold"
-                aria-label="Previous quote"
-              >
-                ← Previous
-              </button>
-              <span className="text-text-muted text-sm">
-                {currentQuoteIndex + 1} of {allQuotes.length}
-              </span>
-              <button
-                onClick={nextQuote}
-                className="text-coral hover:underline font-semibold"
-                aria-label="Next quote"
-              >
-                Next →
-              </button>
-            </div>
           </div>
+
+          {/* Side peek buttons for desktop - show hints of adjacent cards */}
+          <button
+            onClick={prevQuote}
+            className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 opacity-30 hover:opacity-100 transition-opacity"
+            aria-label="Previous quote"
+          >
+            <div className="w-16 h-32 bg-cream-panel rounded-lg shadow-sm border-2 border-transparent hover:border-coral transition-all">
+              <div className="flex items-center justify-center h-full text-2xl">←</div>
+            </div>
+          </button>
+          <button
+            onClick={nextQuote}
+            className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 opacity-30 hover:opacity-100 transition-opacity"
+            aria-label="Next quote"
+          >
+            <div className="w-16 h-32 bg-cream-panel rounded-lg shadow-sm border-2 border-transparent hover:border-coral transition-all">
+              <div className="flex items-center justify-center h-full text-2xl">→</div>
+            </div>
+          </button>
         </div>
 
         {/* Divider */}
