@@ -14,25 +14,25 @@ const teamMembers = [
     isHuman: true,
   },
   {
-    name: 'Claude Code',
+    name: 'Claus',
     role: 'Problem Solver',
     description: 'Tackles complex challenges with systematic debugging, root cause analysis, and creative solutions. Never sleeps, never complains about tech debt.',
     isHuman: false,
   },
   {
-    name: 'Claude Code',
+    name: 'Claudio',
     role: 'Code Reviewer',
     description: 'Obsessively reviews every line for bugs, security issues, and code quality. Provides brutally honest feedback without the office politics.',
     isHuman: false,
   },
   {
-    name: 'Claude Code',
+    name: 'Claudia',
     role: 'Software Developer',
     description: 'Builds production-ready applications from scratch. Writes clean, well-tested code. Actually reads the documentation.',
     isHuman: false,
   },
   {
-    name: 'Claude Code',
+    name: 'Claudieta',
     role: 'Microsoft 365 Expert',
     description: 'Creates stunning PowerPoints, complex Excel models, polished PDFs, and professional Word docs. Makes you look like you spent weeks on it.',
     isHuman: false,
@@ -51,9 +51,8 @@ export function TeamModal({ isOpen, onClose }: TeamModalProps) {
     <Modal isOpen={isOpen} onClose={onClose} title="Meet the Team">
       <div className="py-4">
         {/* Humorous disclaimer */}
-        <div className="mb-8 text-right">
-          <p className="text-small text-text-muted italic max-w-md ml-auto">
-            <span className="font-semibold">We've been told</span> we should be transparent:
+        <div className="mb-8">
+          <p className="text-small text-text-muted italic text-center max-w-2xl mx-auto">
             "Time To Build" is Michael and his best agent friends—Claude in various
             professional disguises. Think of it as a one-person consulting firm with
             an exceptionally talented (and tireless) AI workforce. No HR issues.

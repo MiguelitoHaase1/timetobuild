@@ -60,28 +60,33 @@ export function Examples() {
 
         {/* Quote Carousel - with box around it and peek navigation */}
         <div className="mb-12 relative">
-          {/* Carousel controls at top (mobile and desktop) */}
-          <div className="flex items-center justify-center gap-4 mb-6">
-            <button
-              onClick={prevQuote}
-              className="text-coral hover:underline font-semibold"
-              aria-label="Previous quote"
-            >
-              ← Previous
-            </button>
-            <span className="text-text-muted text-sm">
-              {currentQuoteIndex + 1} of {allQuotes.length}
-            </span>
-            <button
-              onClick={nextQuote}
-              className="text-coral hover:underline font-semibold"
-              aria-label="Next quote"
-            >
-              Next →
-            </button>
-          </div>
-
           <div className="max-w-3xl mx-auto panel bg-white">
+            {/* Title at top of carousel box */}
+            <h3 className="text-xl font-serif font-semibold text-text-primary text-center mb-4">
+              AI empowered employee behavior
+            </h3>
+
+            {/* Carousel controls below title */}
+            <div className="flex items-center justify-center gap-4 mb-6 pb-4 border-b border-cream-panel">
+              <button
+                onClick={prevQuote}
+                className="text-coral hover:underline font-semibold"
+                aria-label="Previous quote"
+              >
+                ← Previous
+              </button>
+              <span className="text-text-muted text-sm">
+                {currentQuoteIndex + 1} of {allQuotes.length}
+              </span>
+              <button
+                onClick={nextQuote}
+                className="text-coral hover:underline font-semibold"
+                aria-label="Next quote"
+              >
+                Next →
+              </button>
+            </div>
+
             {/* Quote with smaller font */}
             <blockquote className="text-xl md:text-2xl font-serif text-text-primary leading-relaxed text-center mb-6">
               "{currentQuote.quote}"
