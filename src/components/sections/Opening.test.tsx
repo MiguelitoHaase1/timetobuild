@@ -10,6 +10,12 @@ describe('Opening', () => {
     )
   })
 
+  it('renders the follow-up question', () => {
+    render(<Opening />)
+    const followUpTexts = screen.getAllByText(/or take away their superpowers\?/i)
+    expect(followUpTexts.length).toBeGreaterThan(0)
+  })
+
   it('renders as a full-height section', () => {
     const { container } = render(<Opening />)
     const section = container.querySelector('section')
