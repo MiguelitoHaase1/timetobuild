@@ -1,22 +1,11 @@
 import { useState, useEffect } from 'react'
 
 export function Opening() {
-  const [scrolled, setScrolled] = useState(false)
-  const [showDesktopText, setShowDesktopText] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY
-      setScrolled(scrollPosition > 50)
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  const [showSubtitle, setShowSubtitle] = useState(false)
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setShowDesktopText(true)
+      setShowSubtitle(true)
     }, 3000)
 
     return () => clearTimeout(timer)
@@ -44,10 +33,10 @@ export function Opening() {
             Do your AI tools empower your employees?
           </h1>
 
-          {/* Mobile: Show on scroll */}
+          {/* Mobile: Show after 3 seconds */}
           <p
-            className={`md:hidden text-2xl sm:text-3xl font-serif text-text-primary leading-tight mt-6 transition-all duration-500 ${
-              scrolled ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
+            className={`md:hidden text-2xl sm:text-3xl font-serif text-text-primary leading-tight mt-6 transition-opacity duration-1000 ${
+              showSubtitle ? 'opacity-100' : 'opacity-0'
             }`}
           >
             ... or take away their superpowers?
@@ -56,7 +45,7 @@ export function Opening() {
           {/* Desktop: Show after 3 seconds */}
           <p
             className={`hidden md:block text-3xl lg:text-4xl font-serif text-text-primary leading-tight mt-6 transition-opacity duration-1000 ${
-              showDesktopText ? 'opacity-100' : 'opacity-0'
+              showSubtitle ? 'opacity-100' : 'opacity-0'
             }`}
           >
             ... or take away their superpowers?

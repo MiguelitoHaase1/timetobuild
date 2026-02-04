@@ -10,12 +10,12 @@ export function Shift() {
 
   return (
     <section className="relative py-20 px-6 bg-cream-panel overflow-hidden">
-      {/* Background Image */}
+      {/* Background Image - centered on Superman figure for mobile */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-15"
+        className="absolute inset-0 bg-cover bg-no-repeat opacity-15"
         style={{
           backgroundImage: 'url(/after.png)',
-          backgroundPosition: 'center center',
+          backgroundPosition: '60% center', // Center on Superman figure (slightly right of center)
         }}
       />
 
