@@ -6,7 +6,7 @@ export function Opening() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowSubtitle(true)
-    }, 3000)
+    }, 1000)
 
     return () => clearTimeout(timer)
   }, [])

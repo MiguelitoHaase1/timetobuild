@@ -138,17 +138,6 @@ export function Examples() {
             </div>
           </button>
         </div>
-
-        {/* Divider */}
-        <div className="border-t border-cream-panel my-12"></div>
-
-        {/* Gibson quote */}
-        <div className="text-center">
-          <p className="text-xl italic text-text-primary mb-2">
-            "{impact.leadingIndicators.quote}"
-          </p>
-          <p className="text-small text-text-muted">— {impact.leadingIndicators.quoteAuthor}</p>
-        </div>
       </div>
 
       <DemoModal isOpen={isDemoModalOpen} onClose={handleCloseDemo} />

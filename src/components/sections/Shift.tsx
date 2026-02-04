@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { SectionHeading } from '../ui/SectionHeading'
 import { ContactCTA } from '../ui/ContactCTA'
 import { TeamModal } from '../ui/TeamModal'
-import { Button } from '../ui/Button'
 import { shift } from '@/content'
 
 export function Shift() {
@@ -36,13 +35,6 @@ export function Shift() {
 
         {/* Final CTA */}
         <ContactCTA />
-
-        {/* Meet the Team button */}
-        <div className="mt-8 text-center">
-          <Button onClick={() => setIsTeamModalOpen(true)} variant="secondary">
-            Meet the Team
-          </Button>
-        </div>
       </div>
 
       <TeamModal isOpen={isTeamModalOpen} onClose={() => setIsTeamModalOpen(false)} />
