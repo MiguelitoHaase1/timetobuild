@@ -1,7 +1,7 @@
 export const impact = {
   heading: "Impact",
   introduction: [
-    "Expect the CEO to be convinced and excited within a few weeks, expect employee engagement in pilot teams to rise by 30-50% within 1 month, and see real efficiency improvements within 1 quarter.",
+    "If you go with a Time To Build transformation, Expect the CEO to be an active AI role model within a month, expect employee engagement in pilot teams to rise by 30-50% within 2 months, and see real efficiency improvements within 1 quarter.",
     "The leading indicator of a successful AI transformation is sky rocketing 'Employee Engagement' - expect to see behavior like this:",
   ],
 

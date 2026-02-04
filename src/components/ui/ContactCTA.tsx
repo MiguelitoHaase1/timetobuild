@@ -19,7 +19,7 @@ export function ContactCTA() {
             onClick={() => setIsTeamModalOpen(true)}
             className="text-text-secondary hover:text-coral transition-colors underline decoration-dotted"
           >
-            wait, who is Michael?
+            Who is Time To Build?
           </button>
         </p>
       </div>
