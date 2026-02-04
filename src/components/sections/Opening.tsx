@@ -52,15 +52,15 @@ export function Opening() {
 
       <style>{`
         @keyframes blink {
-          0%, 33.33% {
+          0%, 20% {
             opacity: 1;
           }
-          33.34%, 100% {
+          20.01%, 100% {
             opacity: 0;
           }
         }
         .animate-blink {
-          animation: blink 3s infinite;
+          animation: blink 5s infinite;
         }
       `}</style>
     </section>
