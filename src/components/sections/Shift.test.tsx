@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { render, screen } from '@/test/test-utils'
 import { Shift } from './Shift'
 
 describe('Shift', () => {
@@ -16,7 +16,7 @@ describe('Shift', () => {
 
   it('renders the contact CTA', () => {
     render(<Shift />)
-    expect(screen.getByText(/Want to know more about/i)).toBeInTheDocument()
+    expect(screen.getByText(/Want to know more\?/i)).toBeInTheDocument()
     expect(screen.getByText(/michael@timetobuild.ai/i)).toBeInTheDocument()
   })
 

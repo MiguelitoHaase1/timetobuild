@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { render, screen } from '@/test/test-utils'
 import { Hero } from './Hero'
 
 describe('Hero', () => {
@@ -15,12 +15,12 @@ describe('Hero', () => {
 
   it('renders consultancy callout', () => {
     render(<Hero />)
-    expect(screen.getByText(/coaches your employees to ensure a succesful AI transformation/i)).toBeInTheDocument()
+    expect(screen.getByText(/onboards your organization to the world's best AI tools/i)).toBeInTheDocument()
   })
 
   it('renders contact CTA', () => {
     render(<Hero />)
-    expect(screen.getByText(/Want to know more about/i)).toBeInTheDocument()
+    expect(screen.getByText(/Want to know more\?/i)).toBeInTheDocument()
     const timeToBuildRefs = screen.getAllByText(/Time To Build/i)
     expect(timeToBuildRefs.length).toBeGreaterThan(0)
     expect(screen.getByText(/michael@timetobuild.ai/i)).toBeInTheDocument()
