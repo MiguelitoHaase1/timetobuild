@@ -35,7 +35,7 @@ export function Opening() {
       />
 
       {/* Cream overlay for brand alignment and text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-cream/50 via-cream/40 to-cream/50" />
+      <div className="absolute inset-0 bg-gradient-to-b from-cream/65 via-cream/55 to-cream/65" />
 
       {/* Content */}
       <div className="relative z-10 max-w-5xl mx-auto px-6">
@@ -46,7 +46,7 @@ export function Opening() {
 
           {/* Mobile: Show on scroll */}
           <p
-            className={`md:hidden text-2xl sm:text-3xl font-serif text-text-secondary leading-tight mt-6 transition-all duration-500 ${
+            className={`md:hidden text-2xl sm:text-3xl font-serif text-text-primary leading-tight mt-6 transition-all duration-500 ${
               scrolled ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
             }`}
           >
@@ -55,7 +55,7 @@ export function Opening() {
 
           {/* Desktop: Show after 3 seconds */}
           <p
-            className={`hidden md:block text-3xl lg:text-4xl font-serif text-text-secondary leading-tight mt-6 transition-opacity duration-1000 ${
+            className={`hidden md:block text-3xl lg:text-4xl font-serif text-text-primary leading-tight mt-6 transition-opacity duration-1000 ${
               showDesktopText ? 'opacity-100' : 'opacity-0'
             }`}
           >
