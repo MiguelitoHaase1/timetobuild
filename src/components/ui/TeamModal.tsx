@@ -67,10 +67,8 @@ export function TeamModal({ isOpen, onClose }: TeamModalProps) {
         {/* Humorous disclaimer */}
         <div className="mb-8">
           <p className="text-small text-text-muted italic text-center max-w-2xl mx-auto">
-            "Time To Build" is Michael and his best agent friends—Claude in various
-            professional disguises. Think of it as a one-person consulting firm with
-            an exceptionally talented (and tireless) AI workforce. No HR issues.
-            Amazing coffee budget ratio. 😊
+            We are a consultancy that believes in the 'AI empowered employee'. We eat our own dogfood - so the "Time To Build" team is simply Michael and his best trained AI friends — Claude in various
+            professional disguises. Our value proposition is to have every employee in your company operate that way.
           </p>
         </div>
 
