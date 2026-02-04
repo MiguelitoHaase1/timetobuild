@@ -6,7 +6,7 @@ describe('Opening', () => {
   it('renders the main question', () => {
     render(<Opening />)
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
-      /Does your AI tools empower your employees\?/i
+      /Do your AI tools empower your employees\?/i
     )
   })
 

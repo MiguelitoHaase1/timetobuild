@@ -17,7 +17,7 @@ export function Opening() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowDesktopText(true)
-    }, 5000)
+    }, 3000)
 
     return () => clearTimeout(timer)
   }, [])
@@ -40,22 +40,22 @@ export function Opening() {
       {/* Content */}
       <div className="relative z-10 max-w-5xl mx-auto px-6">
         <div className="text-center">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-text-primary leading-tight drop-shadow-lg">
-            Does your AI tools empower your employees?
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-semibold text-text-primary leading-tight">
+            Do your AI tools empower your employees?
           </h1>
 
           {/* Mobile: Show on scroll */}
           <p
-            className={`md:hidden text-3xl sm:text-4xl font-serif font-bold text-text-primary leading-tight drop-shadow-lg mt-6 transition-all duration-500 ${
+            className={`md:hidden text-2xl sm:text-3xl font-serif text-text-secondary leading-tight mt-6 transition-all duration-500 ${
               scrolled ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
             }`}
           >
             ... or take away their superpowers?
           </p>
 
-          {/* Desktop: Show after 5 seconds */}
+          {/* Desktop: Show after 3 seconds */}
           <p
-            className={`hidden md:block text-5xl lg:text-6xl font-serif font-bold text-text-primary leading-tight drop-shadow-lg mt-6 transition-opacity duration-1000 ${
+            className={`hidden md:block text-3xl lg:text-4xl font-serif text-text-secondary leading-tight mt-6 transition-opacity duration-1000 ${
               showDesktopText ? 'opacity-100' : 'opacity-0'
             }`}
           >
