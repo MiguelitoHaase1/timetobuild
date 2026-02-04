@@ -18,7 +18,6 @@ describe('Shift', () => {
     render(<Shift />)
     expect(screen.getByText(/Want to know more about/i)).toBeInTheDocument()
     expect(screen.getByText(/michael@timetobuild.ai/i)).toBeInTheDocument()
-    expect(screen.getByText(/Michael likes coffee/i)).toBeInTheDocument()
   })
 
   it('renders the Meet the Team button', () => {

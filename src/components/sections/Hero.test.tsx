@@ -24,6 +24,5 @@ describe('Hero', () => {
     const timeToBuildRefs = screen.getAllByText(/Time To Build/i)
     expect(timeToBuildRefs.length).toBeGreaterThan(0)
     expect(screen.getByText(/michael@timetobuild.ai/i)).toBeInTheDocument()
-    expect(screen.getByText(/Michael likes coffee/i)).toBeInTheDocument()
   })
 })

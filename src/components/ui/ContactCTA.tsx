@@ -15,8 +15,6 @@ export function ContactCTA() {
           </a>
         </p>
         <p className="text-small text-text-muted text-center mt-3">
-          <span className="italic">Psssst - Michael likes coffee ☕</span>
-          <span className="mx-2">·</span>
           <button
             onClick={() => setIsTeamModalOpen(true)}
             className="text-text-secondary hover:text-coral transition-colors underline decoration-dotted"
