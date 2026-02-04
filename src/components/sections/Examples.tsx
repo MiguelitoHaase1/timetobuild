@@ -60,61 +60,73 @@ export function Examples() {
 
         {/* Quote Carousel - with box around it and peek navigation */}
         <div className="mb-12 relative">
-          <div className="max-w-3xl mx-auto panel bg-white">
-            {/* Title at top of carousel box */}
-            <h3 className="text-xl font-serif font-semibold text-text-primary text-center mb-4">
-              AI empowered employee behavior
-            </h3>
+          <div className="max-w-3xl mx-auto panel bg-white relative overflow-hidden">
+            {/* Background Image */}
+            <div
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
+              style={{
+                backgroundImage: 'url(/hero.png)',
+                backgroundPosition: 'center center',
+              }}
+            />
 
-            {/* Carousel controls below title */}
-            <div className="flex items-center justify-center gap-4 mb-6 pb-4 border-b border-cream-panel">
-              <button
-                onClick={prevQuote}
-                className="text-coral hover:underline font-semibold"
-                aria-label="Previous quote"
-              >
-                ← Previous
-              </button>
-              <span className="text-text-muted text-sm">
-                {currentQuoteIndex + 1} of {allQuotes.length}
-              </span>
-              <button
-                onClick={nextQuote}
-                className="text-coral hover:underline font-semibold"
-                aria-label="Next quote"
-              >
-                Next →
-              </button>
-            </div>
+            {/* Content with relative positioning to stay above background */}
+            <div className="relative z-10">
+              {/* Title at top of carousel box */}
+              <h3 className="text-xl font-serif font-semibold text-text-primary text-center mb-4">
+                AI empowered employee behavior
+              </h3>
 
-            {/* Quote with smaller font */}
-            <blockquote className="text-xl md:text-2xl font-serif text-text-primary leading-relaxed text-center mb-6">
-              "{currentQuote.quote}"
-            </blockquote>
-            <div className="text-center text-text-secondary mb-8">
-              <div className="font-semibold text-text-primary">{currentQuote.author}</div>
-              <div className="text-small text-text-muted">{currentQuote.role} • {currentQuote.source}</div>
-            </div>
-
-            {/* Divider between quote and artifacts */}
-            <div className="border-t border-cream-panel my-6"></div>
-
-            {/* Relevant capabilities - clickable cards with hidden description on mobile */}
-            <div className="grid grid-cols-2 gap-4 mb-6">
-              {relevantCapabilities.map((capability, index) => (
+              {/* Carousel controls below title */}
+              <div className="flex items-center justify-center gap-4 mb-6 pb-4 border-b border-cream-panel">
                 <button
-                  key={index}
-                  onClick={handleOpenDemo}
-                  className="panel bg-cream-panel hover:bg-cream hover:shadow-md transition-all duration-200 cursor-pointer border-2 border-transparent hover:border-coral text-center group"
+                  onClick={prevQuote}
+                  className="text-coral hover:underline font-semibold"
+                  aria-label="Previous quote"
                 >
-                  <div className="text-4xl mb-2 group-hover:scale-110 transition-transform">{capability.icon}</div>
-                  <div className="font-semibold text-sm text-text-primary mb-1 group-hover:text-coral transition-colors">
-                    {capability.title}
-                  </div>
-                  {/* Hide description on mobile to save space */}
-                  <div className="text-xs text-text-secondary hidden md:block">{capability.description}</div>
+                  ← Previous
                 </button>
-              ))}
+                <span className="text-text-muted text-sm">
+                  {currentQuoteIndex + 1} of {allQuotes.length}
+                </span>
+                <button
+                  onClick={nextQuote}
+                  className="text-coral hover:underline font-semibold"
+                  aria-label="Next quote"
+                >
+                  Next →
+                </button>
+              </div>
+
+              {/* Quote with smaller font */}
+              <blockquote className="text-xl md:text-2xl font-serif text-text-primary leading-relaxed text-center mb-6">
+                "{currentQuote.quote}"
+              </blockquote>
+              <div className="text-center text-text-secondary mb-8">
+                <div className="font-semibold text-text-primary">{currentQuote.author}</div>
+                <div className="text-small text-text-muted">{currentQuote.role} • {currentQuote.source}</div>
+              </div>
+
+              {/* Divider between quote and artifacts */}
+              <div className="border-t border-cream-panel my-6"></div>
+
+              {/* Relevant capabilities - clickable cards with hidden description on mobile */}
+              <div className="grid grid-cols-2 gap-4 mb-6">
+                {relevantCapabilities.map((capability, index) => (
+                  <button
+                    key={index}
+                    onClick={handleOpenDemo}
+                    className="panel bg-cream-panel hover:bg-cream hover:shadow-md transition-all duration-200 cursor-pointer border-2 border-transparent hover:border-coral text-center group"
+                  >
+                    <div className="text-4xl mb-2 group-hover:scale-110 transition-transform">{capability.icon}</div>
+                    <div className="font-semibold text-sm text-text-primary mb-1 group-hover:text-coral transition-colors">
+                      {capability.title}
+                    </div>
+                    {/* Hide description on mobile to save space */}
+                    <div className="text-xs text-text-secondary hidden md:block">{capability.description}</div>
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
 
