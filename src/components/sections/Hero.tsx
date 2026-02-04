@@ -1,10 +1,13 @@
 import { SectionHeading } from '../ui/SectionHeading'
 import { ContactCTA } from '../ui/ContactCTA'
 import { hero } from '@/content'
+import { useSectionTracking } from '@/hooks'
 
 export function Hero() {
+  const sectionRef = useSectionTracking('hero')
+
   return (
-    <section className="bg-cream min-h-screen flex items-center justify-center px-6 py-12">
+    <section ref={sectionRef} className="bg-cream min-h-screen flex items-center justify-center px-6 py-12">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
           <SectionHeading level={1} centered className="mb-8">

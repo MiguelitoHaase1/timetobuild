@@ -3,12 +3,14 @@ import { SectionHeading } from '../ui/SectionHeading'
 import { ContactCTA } from '../ui/ContactCTA'
 import { TeamModal } from '../ui/TeamModal'
 import { shift } from '@/content'
+import { useSectionTracking } from '@/hooks'
 
 export function Shift() {
   const [isTeamModalOpen, setIsTeamModalOpen] = useState(false)
+  const sectionRef = useSectionTracking('shift')
 
   return (
-    <section className="relative py-20 px-6 bg-cream-panel overflow-hidden">
+    <section ref={sectionRef} className="relative py-20 px-6 bg-cream-panel overflow-hidden">
       {/* Background Image - centered on Superman figure for mobile */}
       <div
         className="absolute inset-0 bg-cover bg-no-repeat opacity-15"

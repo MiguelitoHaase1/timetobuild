@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { SectionHeading } from '../ui/SectionHeading'
 import { DemoModal } from '../ui/DemoModal'
 import { impact } from '@/content'
-import { useAnalytics } from '@/hooks'
+import { useAnalytics, useSectionTracking } from '@/hooks'
 
 // Map each quote to relevant capability indices
 const quoteCapabilityMap: Record<number, number[]> = {
@@ -21,6 +21,7 @@ export function Examples() {
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
   const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0)
   const { trackEvent, EVENTS } = useAnalytics()
+  const sectionRef = useSectionTracking('examples')
 
   // Combine all quotes into one array
   const allQuotes = [...impact.powerUserQuotes, ...impact.additionalQuotes]
@@ -59,7 +60,7 @@ export function Examples() {
   )
 
   return (
-    <section className="py-20 px-6">
+    <section ref={sectionRef} className="py-20 px-6">
       <div className="max-w-4xl mx-auto">
         <SectionHeading level={2} centered className="mb-8">
           {impact.heading}

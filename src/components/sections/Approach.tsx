@@ -1,10 +1,13 @@
 import { SectionHeading } from '../ui/SectionHeading'
 import { Card } from '../ui/Card'
 import { approach } from '@/content'
+import { useSectionTracking } from '@/hooks'
 
 export function Approach() {
+  const sectionRef = useSectionTracking('approach')
+
   return (
-    <section className="py-12 px-6 bg-cream-panel">
+    <section ref={sectionRef} className="py-12 px-6 bg-cream-panel">
       <div className="max-w-4xl mx-auto">
         <SectionHeading level={2} centered className="mb-8">
           {approach.heading}

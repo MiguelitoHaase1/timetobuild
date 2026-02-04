@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
+import { useSectionTracking } from '@/hooks'
 
 export function Opening() {
   const [showSubtitle, setShowSubtitle] = useState(false)
+  const sectionRef = useSectionTracking('opening')
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -12,7 +14,7 @@ export function Opening() {
   }, [])
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with subtle desaturation and sepia for brand alignment */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"

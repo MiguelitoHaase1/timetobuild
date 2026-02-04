@@ -6,10 +6,23 @@ export const posthogConfig = {
   apiHost: import.meta.env.VITE_POSTHOG_HOST || 'https://us.i.posthog.com',
   options: {
     // Privacy-first configuration
-    autocapture: false, // Only track explicit events
     capture_pageview: false, // We'll handle page views manually
     persistence: 'localStorage' as const, // Less invasive than cookies
-    disable_session_recording: true,
+
+    // Autocapture configuration - automatically track clicks on buttons and links
+    autocapture: true,
+
+    // Session recording configuration
+    disable_session_recording: false,
+    enable_recording_console_log: false, // Don't record console logs for privacy
+    session_recording: {
+      recordCrossOriginIframes: false,
+      maskAllInputs: true, // Mask form inputs for privacy
+      maskTextSelector: '[data-private]', // Mask elements with this attribute
+      sampling: {
+        minimumDuration: 2000, // Only record sessions longer than 2 seconds
+      },
+    },
 
     // Disable in development
     loaded: (ph: { opt_out_capturing: () => void }) => {
@@ -45,6 +58,10 @@ export const ANALYTICS_EVENTS = {
   IMPACT_SECTION_TOGGLE: 'impact_section_toggle',
   IMPACT_SPOTLIGHT_NAV: 'impact_spotlight_nav',
 
+  // Section tracking
+  SECTION_VIEW: 'section_view',
+  SECTION_TIME: 'section_time',
+
   // Page views
   PAGE_VIEW: 'page_view',
 } as const;
@@ -63,6 +80,7 @@ export interface AnalyticsEventProperties {
   expanded?: boolean; // Toggle state
   linkedin_url?: string; // LinkedIn profile URL
   team_member?: string; // Team member name
+  seconds?: number; // Time spent in seconds (for section_time events)
 }
 
 // Initialize PostHog

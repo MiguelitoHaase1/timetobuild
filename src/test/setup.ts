@@ -18,6 +18,26 @@ vi.mock('@posthog/react', () => ({
   }),
 }))
 
+// Mock IntersectionObserver for section tracking
+global.IntersectionObserver = class IntersectionObserver {
+  constructor() {}
+  observe() {}
+  disconnect() {}
+  unobserve() {}
+  takeRecords() {
+    return []
+  }
+  get root() {
+    return null
+  }
+  get rootMargin() {
+    return ''
+  }
+  get thresholds() {
+    return []
+  }
+} as unknown as typeof IntersectionObserver
+
 // Cleanup after each test
 afterEach(() => {
   cleanup()
