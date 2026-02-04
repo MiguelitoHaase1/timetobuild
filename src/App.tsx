@@ -1,8 +1,9 @@
-import { Hero, Shift, Approach, Examples } from './components/sections'
+import { Opening, Hero, Shift, Approach, Examples } from './components/sections'
 
 function App() {
   return (
     <div className="min-h-screen">
+      <Opening />
       <Hero />
       <Approach />
       <Examples />

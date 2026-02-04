@@ -1,3 +1,4 @@
+export { Opening } from './Opening'
 export { Hero } from './Hero'
 export { Shift } from './Shift'
 export { Proof } from './Proof'
