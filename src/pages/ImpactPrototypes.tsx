@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { impact } from '@/content'
+import { useAnalytics } from '@/hooks'
 
 export function ImpactPrototypes() {
   const [currentSpotlight, setCurrentSpotlight] = useState(0)
@@ -8,6 +9,7 @@ export function ImpactPrototypes() {
     capabilities: false,
     stories: false,
   })
+  const { trackEvent, EVENTS } = useAnalytics()
 
   const spotlightItems = [
     {
@@ -25,14 +27,27 @@ export function ImpactPrototypes() {
   ]
 
   const toggleSection = (section: string) => {
+    const isExpanding = !expandedSections[section]
+    trackEvent(EVENTS.IMPACT_SECTION_TOGGLE, {
+      section,
+      expanded: isExpanding,
+    })
     setExpandedSections(prev => ({ ...prev, [section]: !prev[section] }))
   }
 
   const nextSpotlight = () => {
+    trackEvent(EVENTS.IMPACT_SPOTLIGHT_NAV, {
+      direction: 'next',
+      from_index: currentSpotlight,
+    })
     setCurrentSpotlight((prev) => (prev + 1) % spotlightItems.length)
   }
 
   const prevSpotlight = () => {
+    trackEvent(EVENTS.IMPACT_SPOTLIGHT_NAV, {
+      direction: 'prev',
+      from_index: currentSpotlight,
+    })
     setCurrentSpotlight((prev) => (prev - 1 + spotlightItems.length) % spotlightItems.length)
   }
 

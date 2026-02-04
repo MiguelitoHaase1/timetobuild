@@ -1,5 +1,6 @@
 import { Modal } from './Modal'
 import { contact } from '@/content'
+import { useAnalytics } from '@/hooks'
 
 interface TeamModalProps {
   isOpen: boolean
@@ -61,8 +62,15 @@ const teamMembers: TeamMember[] = [
 ]
 
 export function TeamModal({ isOpen, onClose }: TeamModalProps) {
+  const { trackEvent, EVENTS } = useAnalytics()
+
+  const handleClose = () => {
+    trackEvent(EVENTS.TEAM_MODAL_CLOSE)
+    onClose()
+  }
+
   return (
-    <Modal isOpen={isOpen} onClose={onClose} title="Meet the Team">
+    <Modal isOpen={isOpen} onClose={handleClose} title="Meet the Team">
       <div className="py-4">
         {/* Humorous disclaimer */}
         <div className="mb-8">
@@ -117,6 +125,12 @@ export function TeamModal({ isOpen, onClose }: TeamModalProps) {
                     rel="noopener noreferrer"
                     className="text-coral hover:text-text-primary transition-colors"
                     aria-label="LinkedIn profile"
+                    onClick={() =>
+                      trackEvent(EVENTS.TEAM_CLICK_LINKEDIN, {
+                        team_member: member.name,
+                        linkedin_url: 'https://www.linkedin.com/in/%F0%9F%8C%B1-michael-haase-5722b46/',
+                      })
+                    }
                   >
                     <svg
                       className="w-6 h-6"

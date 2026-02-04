@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { SectionHeading } from '../ui/SectionHeading'
 import { DemoModal } from '../ui/DemoModal'
 import { impact } from '@/content'
+import { useAnalytics } from '@/hooks'
 
 // Map each quote to relevant capability indices
 const quoteCapabilityMap: Record<number, number[]> = {
@@ -19,11 +20,16 @@ const quoteCapabilityMap: Record<number, number[]> = {
 export function Examples() {
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
   const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0)
+  const { trackEvent, EVENTS } = useAnalytics()
 
   // Combine all quotes into one array
   const allQuotes = [...impact.powerUserQuotes, ...impact.additionalQuotes]
 
-  const handleOpenDemo = () => {
+  const handleOpenDemo = (capability?: string) => {
+    trackEvent(EVENTS.DEMO_MODAL_OPEN, {
+      capability,
+      quote_index: currentQuoteIndex,
+    })
     setIsDemoModalOpen(true)
   }
 
@@ -32,10 +38,18 @@ export function Examples() {
   }
 
   const nextQuote = () => {
+    trackEvent(EVENTS.EXAMPLES_CAROUSEL_NAV, {
+      direction: 'next',
+      from_index: currentQuoteIndex,
+    })
     setCurrentQuoteIndex((prev) => (prev + 1) % allQuotes.length)
   }
 
   const prevQuote = () => {
+    trackEvent(EVENTS.EXAMPLES_CAROUSEL_NAV, {
+      direction: 'prev',
+      from_index: currentQuoteIndex,
+    })
     setCurrentQuoteIndex((prev) => (prev - 1 + allQuotes.length) % allQuotes.length)
   }
 
@@ -104,7 +118,13 @@ export function Examples() {
               {relevantCapabilities.map((capability, index) => (
                 <button
                   key={index}
-                  onClick={handleOpenDemo}
+                  onClick={() => {
+                    trackEvent(EVENTS.EXAMPLES_CAPABILITY_CLICK, {
+                      capability: capability.title,
+                      quote_index: currentQuoteIndex,
+                    })
+                    handleOpenDemo(capability.title)
+                  }}
                   className="panel bg-cream-panel hover:bg-cream hover:shadow-md transition-all duration-200 cursor-pointer border-2 border-transparent hover:border-coral text-center group"
                 >
                   <div className="text-4xl mb-2 group-hover:scale-110 transition-transform">{capability.icon}</div>
