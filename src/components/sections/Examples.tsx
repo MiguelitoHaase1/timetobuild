@@ -45,18 +45,8 @@ export function Examples() {
   )
 
   return (
-    <section className="relative py-20 px-6 overflow-hidden">
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-15"
-        style={{
-          backgroundImage: 'url(/hero.png)',
-          backgroundPosition: 'center center',
-        }}
-      />
-
-      {/* Content with relative positioning to stay above background */}
-      <div className="relative z-10 max-w-4xl mx-auto">
+    <section className="py-20 px-6">
+      <div className="max-w-4xl mx-auto">
         <SectionHeading level={2} centered className="mb-8">
           {impact.heading}
         </SectionHeading>
