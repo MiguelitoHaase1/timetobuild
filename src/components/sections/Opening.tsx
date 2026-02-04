@@ -24,19 +24,18 @@ export function Opening() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with blur and desaturation */}
+      {/* Background Image with subtle desaturation and sepia for brand alignment */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: 'url(/before.jpeg)',
           backgroundPosition: 'center center',
-          filter: 'blur(3px) saturate(0.7)',
-          transform: 'scale(1.05)', // Compensate for blur edges
+          filter: 'grayscale(0.3) sepia(0.2) brightness(0.9)',
         }}
       />
 
-      {/* Overlay for professional look aligned with brand */}
-      <div className="absolute inset-0 bg-gradient-to-b from-cream/60 via-cream/50 to-cream/60" />
+      {/* Cream overlay for brand alignment and text readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-cream/50 via-cream/40 to-cream/50" />
 
       {/* Content */}
       <div className="relative z-10 max-w-5xl mx-auto px-6">
