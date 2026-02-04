@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 
 export function Opening() {
   const [scrolled, setScrolled] = useState(false)
+  const [showDesktopText, setShowDesktopText] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -11,6 +12,14 @@ export function Opening() {
 
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowDesktopText(true)
+    }, 5000)
+
+    return () => clearTimeout(timer)
   }, [])
 
   return (
@@ -43,26 +52,16 @@ export function Opening() {
             ... or take away their superpowers?
           </p>
 
-          {/* Desktop: Blinking effect */}
-          <p className="hidden md:block text-5xl lg:text-6xl font-serif font-bold text-white leading-tight drop-shadow-2xl mt-6 animate-blink">
+          {/* Desktop: Show after 5 seconds */}
+          <p
+            className={`hidden md:block text-5xl lg:text-6xl font-serif font-bold text-white leading-tight drop-shadow-2xl mt-6 transition-opacity duration-1000 ${
+              showDesktopText ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
             ... or take away their superpowers?
           </p>
         </div>
       </div>
-
-      <style>{`
-        @keyframes blink {
-          0%, 20% {
-            opacity: 1;
-          }
-          20.01%, 100% {
-            opacity: 0;
-          }
-        }
-        .animate-blink {
-          animation: blink 5s infinite;
-        }
-      `}</style>
     </section>
   )
 }
