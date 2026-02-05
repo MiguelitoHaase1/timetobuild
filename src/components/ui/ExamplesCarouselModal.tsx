@@ -10,8 +10,8 @@ interface ExamplesCarouselModalProps {
 
 // Map each quote to relevant capability indices (after reordering)
 const quoteCapabilityMap: Record<number, number[]> = {
-  0: [0, 1], // Meeting recordings: Presentations & Reports, Custom Apps
-  1: [0, 2], // PMs context: Presentations & Reports, Document Analysis
+  0: [2, 1], // Meeting recordings: Document Analysis, Custom Apps
+  1: [3, 0], // PMs context: Automated Workflows, Presentations & Reports
   2: [1, 3], // Sam Bowman: Custom Apps, Automated Workflows
   3: [0, 2], // Anonymous NN: Presentations & Reports, Document Analysis
   4: [0, 2], // Sam Bowman (itinerary): Presentations & Reports, Document Analysis
