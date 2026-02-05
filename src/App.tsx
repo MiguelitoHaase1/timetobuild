@@ -11,18 +11,18 @@ function App() {
     offset: ['start end', 'start start']
   })
 
-  // Slide up from 20vh below to 0
-  const heroY = useTransform(scrollYProgress, [0, 1], [100, 0])
+  // Gentle slide up - stops before getting too close to video
+  const heroY = useTransform(scrollYProgress, [0, 0.8], [80, 0])
 
   return (
     <div className="min-h-screen">
       <Opening />
-      {/* Hero section slides up as you scroll */}
+      {/* Hero section slides up with breathing room below video */}
       <motion.div
         ref={heroRef}
         style={{
           y: heroY,
-          marginTop: '-30vh' // Position to overlap with scroll sequence
+          marginTop: '-15vh' // Reduced overlap for more space
         }}
       >
         <Hero />
