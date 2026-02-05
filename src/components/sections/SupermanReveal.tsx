@@ -28,12 +28,11 @@ export function SupermanReveal() {
             />
 
             {/* Button overlay - at bottom with padding */}
-            <div className="absolute bottom-0 left-0 right-0 flex items-center justify-center pb-8">
+            <div className="absolute bottom-0 left-0 right-0 flex items-center justify-center pb-4 md:pb-8 px-4">
               <Button
                 onClick={handleOpenCarousel}
                 variant="primary"
-                size="large"
-                className="shadow-2xl"
+                className="shadow-2xl text-sm md:text-base px-4 py-2 md:px-8 md:py-4"
               >
                 Examples of AI empowered employees
               </Button>

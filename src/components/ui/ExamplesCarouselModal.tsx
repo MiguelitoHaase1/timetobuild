@@ -79,33 +79,33 @@ export function ExamplesCarouselModal({ isOpen, onClose }: ExamplesCarouselModal
           {/* Close button */}
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 text-text-muted hover:text-text-primary text-2xl w-8 h-8 flex items-center justify-center"
+            className="absolute top-2 right-2 md:top-4 md:right-4 text-text-muted hover:text-text-primary text-2xl w-8 h-8 flex items-center justify-center z-10"
             aria-label="Close modal"
           >
             ×
           </button>
 
           {/* Carousel content */}
-          <div className="p-8">
-            <h2 className="text-2xl font-serif font-semibold text-text-primary text-center mb-6">
+          <div className="p-4 md:p-8">
+            <h2 className="text-lg md:text-2xl font-serif font-semibold text-text-primary text-center mb-4 md:mb-6 pr-8">
               AI Empowered Employee Behavior
             </h2>
 
             {/* Carousel controls */}
-            <div className="flex items-center justify-center gap-4 mb-6 pb-4 border-b border-cream-panel">
+            <div className="flex items-center justify-center gap-2 md:gap-4 mb-4 md:mb-6 pb-3 md:pb-4 border-b border-cream-panel">
               <button
                 onClick={prevQuote}
-                className="text-coral hover:underline font-semibold"
+                className="text-coral hover:underline font-semibold text-sm md:text-base"
                 aria-label="Previous quote"
               >
                 ← Previous
               </button>
-              <span className="text-text-muted text-sm">
+              <span className="text-text-muted text-xs md:text-sm">
                 {currentQuoteIndex + 1} of {allQuotes.length}
               </span>
               <button
                 onClick={nextQuote}
-                className="text-coral hover:underline font-semibold"
+                className="text-coral hover:underline font-semibold text-sm md:text-base"
                 aria-label="Next quote"
               >
                 Next →
@@ -113,19 +113,19 @@ export function ExamplesCarouselModal({ isOpen, onClose }: ExamplesCarouselModal
             </div>
 
             {/* Quote */}
-            <blockquote className="text-xl md:text-2xl font-serif text-text-primary leading-relaxed text-center mb-6">
+            <blockquote className="text-base md:text-xl lg:text-2xl font-serif text-text-primary leading-relaxed text-center mb-4 md:mb-6">
               "{currentQuote.quote}"
             </blockquote>
-            <div className="text-center text-text-secondary mb-8">
-              <div className="font-semibold text-text-primary">{currentQuote.author}</div>
-              <div className="text-small text-text-muted">{currentQuote.role} • {currentQuote.source}</div>
+            <div className="text-center text-text-secondary mb-4 md:mb-8">
+              <div className="font-semibold text-text-primary text-sm md:text-base">{currentQuote.author}</div>
+              <div className="text-xs md:text-small text-text-muted">{currentQuote.role} • {currentQuote.source}</div>
             </div>
 
             {/* Divider */}
-            <div className="border-t border-cream-panel my-6"></div>
+            <div className="border-t border-cream-panel my-4 md:my-6"></div>
 
             {/* Relevant capabilities */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-2 md:gap-4">
               {relevantCapabilities.map((capability, index) => (
                 <button
                   key={index}
@@ -136,10 +136,10 @@ export function ExamplesCarouselModal({ isOpen, onClose }: ExamplesCarouselModal
                     })
                     handleOpenDemo(capability.title)
                   }}
-                  className="panel bg-cream-panel hover:bg-cream hover:shadow-md transition-all duration-200 cursor-pointer border-2 border-transparent hover:border-coral text-center group"
+                  className="panel bg-cream-panel hover:bg-cream hover:shadow-md transition-all duration-200 cursor-pointer border-2 border-transparent hover:border-coral text-center group p-2 md:p-3"
                 >
-                  <div className="text-4xl mb-2 group-hover:scale-110 transition-transform">{capability.icon}</div>
-                  <div className="font-semibold text-sm text-text-primary mb-1 group-hover:text-coral transition-colors">
+                  <div className="text-2xl md:text-4xl mb-1 md:mb-2 group-hover:scale-110 transition-transform">{capability.icon}</div>
+                  <div className="font-semibold text-xs md:text-sm text-text-primary mb-1 group-hover:text-coral transition-colors">
                     {capability.title}
                   </div>
                   <div className="text-xs text-text-secondary hidden md:block">{capability.description}</div>
