@@ -5,9 +5,31 @@ import { ExamplesCarouselModal } from '../ui/ExamplesCarouselModal'
 import { shift } from '@/content'
 import { useSectionTracking, useAnalytics } from '@/hooks'
 
+const featuredQuotes = [
+  {
+    quote: "Forget that it's called Claude Code — think of it as a super-intelligent AI running locally, able to do stuff directly on your computer: organizing files, enhancing images, brainstorming domain names, summarizing calls, creating tickets, and so much more.",
+    author: "Lenny Rachitsky",
+    role: "Lenny's Newsletter",
+    source: "October 2025",
+  },
+  {
+    quote: "We're creating one of the biggest gaps in PM skillsets I've seen: while some PMs are still copying and pasting into ChatGPT, others are orchestrating multiple AI agents that work in parallel, automatically reading files, researching competitors, and building prototypes.",
+    author: "Aakash Gupta",
+    role: "AI + PM Podcast Host",
+    source: "October 2025",
+  },
+  {
+    quote: "Using Claude Code isn't about being technical. It's about being willing to try 3-4 simple commands. That's it. If you can organize files in folders and create text files, you can use Claude Code.",
+    author: "Teresa Torres",
+    role: "Product Talk",
+    source: "November 2025",
+  },
+]
+
 export function Shift() {
   const sectionRef = useSectionTracking('shift')
   const [isCarouselModalOpen, setIsCarouselModalOpen] = useState(false)
+  const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0)
   const { trackEvent, EVENTS } = useAnalytics()
 
   const handleOpenCarousel = () => {
@@ -16,6 +38,16 @@ export function Shift() {
     })
     setIsCarouselModalOpen(true)
   }
+
+  const nextQuote = () => {
+    setCurrentQuoteIndex((prev) => (prev + 1) % featuredQuotes.length)
+  }
+
+  const prevQuote = () => {
+    setCurrentQuoteIndex((prev) => (prev - 1 + featuredQuotes.length) % featuredQuotes.length)
+  }
+
+  const currentQuote = featuredQuotes[currentQuoteIndex]
 
   return (
     <>
@@ -46,27 +78,37 @@ export function Shift() {
             ))}
           </div>
 
-          {/* Quotes side by side */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12 max-w-5xl mx-auto">
-            {/* Lenny quote */}
-            <div className="bg-white/95 backdrop-blur-sm border-l-4 border-coral rounded-lg p-4">
-              <blockquote className="text-sm text-text-primary leading-relaxed mb-2 italic">
-                "Forget that it's called Claude Code — think of it as a super-intelligent AI running locally, able to do stuff directly on your computer: organizing files, enhancing images, brainstorming domain names, summarizing calls, creating tickets, and so much more."
+          {/* Featured quotes carousel */}
+          <div className="mb-12 max-w-2xl mx-auto">
+            <div className="bg-white/95 backdrop-blur-sm border-l-4 border-coral rounded-lg p-5">
+              <blockquote className="text-sm md:text-base text-text-primary leading-relaxed mb-3 italic">
+                "{currentQuote.quote}"
               </blockquote>
-              <div className="flex flex-col gap-0.5">
-                <div className="text-xs font-semibold text-text-primary">Lenny Rachitsky</div>
-                <div className="text-xs text-text-muted">Lenny's Newsletter • October 2025</div>
-              </div>
-            </div>
-
-            {/* Gupta quote */}
-            <div className="bg-white/95 backdrop-blur-sm border-l-4 border-coral rounded-lg p-4">
-              <blockquote className="text-sm text-text-primary leading-relaxed mb-2 italic">
-                "We're creating one of the biggest gaps in PM skillsets I've seen: while some PMs are still copying and pasting into ChatGPT, others are orchestrating multiple AI agents that work in parallel, automatically reading files, researching competitors, and building prototypes."
-              </blockquote>
-              <div className="flex flex-col gap-0.5">
-                <div className="text-xs font-semibold text-text-primary">Aakash Gupta</div>
-                <div className="text-xs text-text-muted">AI + PM Podcast Host • October 2025</div>
+              <div className="flex items-center justify-between">
+                <div className="flex flex-col gap-0.5">
+                  <div className="text-sm font-semibold text-text-primary">{currentQuote.author}</div>
+                  <div className="text-xs text-text-muted">{currentQuote.role} • {currentQuote.source}</div>
+                </div>
+                {/* Carousel controls */}
+                <div className="flex items-center gap-3">
+                  <button
+                    onClick={prevQuote}
+                    className="text-coral hover:text-coral/80 transition-colors text-lg font-bold"
+                    aria-label="Previous quote"
+                  >
+                    ←
+                  </button>
+                  <span className="text-xs text-text-muted">
+                    {currentQuoteIndex + 1}/{featuredQuotes.length}
+                  </span>
+                  <button
+                    onClick={nextQuote}
+                    className="text-coral hover:text-coral/80 transition-colors text-lg font-bold"
+                    aria-label="Next quote"
+                  >
+                    →
+                  </button>
+                </div>
               </div>
             </div>
           </div>

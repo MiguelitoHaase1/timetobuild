@@ -15,8 +15,7 @@ const quoteCapabilityMap: Record<number, number[]> = {
   2: [1, 3], // Sam Bowman: Custom Apps, Automated Workflows
   3: [0, 2], // Anonymous NN: Presentations & Reports, Document Analysis
   4: [0, 2], // Sam Bowman (itinerary): Presentations & Reports, Document Analysis
-  5: [1, 3], // Teresa Torres: Custom Apps, Automated Workflows
-  6: [1, 2], // Anushki: Custom Apps, Document Analysis
+  5: [1, 2], // Anushki: Custom Apps, Document Analysis
 }
 
 export function ExamplesCarouselModal({ isOpen, onClose }: ExamplesCarouselModalProps) {
@@ -24,17 +23,16 @@ export function ExamplesCarouselModal({ isOpen, onClose }: ExamplesCarouselModal
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
   const { trackEvent, EVENTS } = useAnalytics()
 
-  // Combine all quotes, exclude last two, then reorder to put indices 5,6 first
+  // Combine all quotes, exclude last two (Lenny, Aakash) and Teresa Torres (now in Shift section)
   const originalQuotes = [...impact.powerUserQuotes, ...impact.additionalQuotes.slice(0, -2)]
-  // Reorder: [5, 6, 0, 1, 2, 3, 4] - meeting recordings first, then PMs context
+  // Reorder: [5, 6, 0, 1, 2, 4] - meeting recordings first, exclude Teresa Torres (index 3)
   const allQuotes = [
     originalQuotes[5], // Meeting recordings
     originalQuotes[6], // PMs context
     originalQuotes[0], // Sam Bowman
     originalQuotes[1], // Anonymous
     originalQuotes[2], // Sam Bowman itinerary
-    originalQuotes[3], // Teresa Torres
-    originalQuotes[4], // Anushki
+    originalQuotes[4], // Anushki (skip Teresa Torres at index 3)
   ]
 
   const handleOpenDemo = (capability?: string) => {
