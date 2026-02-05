@@ -20,8 +20,8 @@ describe('Opening', () => {
     render(<Opening />)
     const scrollContainer = screen.getByTestId('scroll-sequence-container')
     expect(scrollContainer).toBeInTheDocument()
-    // Check that the container has the 100vh height for scroll animation
-    expect(scrollContainer.style.height).toBe('100vh')
+    // Check that the container has the 130vh height for scroll animation
+    expect(scrollContainer.style.height).toBe('130vh')
   })
 
   it('has video background with fallback', () => {
