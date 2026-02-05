@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { ReactNode, forwardRef } from 'react'
 import { motion } from 'framer-motion'
 import { useScrollProgress } from '@/hooks'
 import { VideoBackground } from './VideoBackground'
@@ -21,14 +21,18 @@ interface VideoHeroProps {
  * - Cream overlay for brand alignment and text readability
  * - Respects prefers-reduced-motion
  */
-export function VideoHero({ webmSrc, mp4Src, posterSrc, fallbackSrc, children }: VideoHeroProps) {
-  const { containerRef, parallaxY, contentOpacity, scale } = useScrollProgress()
+export const VideoHero = forwardRef<HTMLElement, VideoHeroProps>(
+  ({ webmSrc, mp4Src, posterSrc, fallbackSrc, children }, forwardedRef) => {
+    // Pass forwarded ref to scroll hook so it tracks the correct element
+    const { containerRef, parallaxY, contentOpacity, scale } = useScrollProgress(
+      forwardedRef as React.RefObject<HTMLElement>
+    )
 
-  // Check for reduced motion preference
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    // Check for reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-  return (
-    <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    return (
+      <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Video background with parallax and scale effects */}
       <motion.div
         className="absolute inset-0"
@@ -58,5 +62,8 @@ export function VideoHero({ webmSrc, mp4Src, posterSrc, fallbackSrc, children }:
         {children}
       </motion.div>
     </section>
-  )
-}
+    )
+  }
+)
+
+VideoHero.displayName = 'VideoHero'

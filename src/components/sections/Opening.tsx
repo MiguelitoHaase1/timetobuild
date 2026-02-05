@@ -4,7 +4,7 @@ import { VideoHero } from '@/components/video'
 
 export function Opening() {
   const [showSubtitle, setShowSubtitle] = useState(false)
-  const sectionRef = useSectionTracking('opening') as React.RefObject<HTMLDivElement>
+  const sectionRef = useSectionTracking('opening')
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -15,13 +15,13 @@ export function Opening() {
   }, [])
 
   return (
-    <div ref={sectionRef}>
-      <VideoHero
-        webmSrc="/videos/before-hero.webm"
-        mp4Src="/videos/before-hero.mp4"
-        posterSrc="/videos/before-hero-poster.jpg"
-        fallbackSrc="/before.jpeg"
-      >
+    <VideoHero
+      ref={sectionRef}
+      webmSrc="/videos/before-hero.webm"
+      mp4Src="/videos/before-hero.mp4"
+      posterSrc="/videos/before-hero-poster.jpg"
+      fallbackSrc="/before.jpeg"
+    >
         <div className="text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-semibold text-text-primary leading-tight">
             Do your AI tools empower your employees?
@@ -46,6 +46,5 @@ export function Opening() {
           </p>
         </div>
       </VideoHero>
-    </div>
   )
 }

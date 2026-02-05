@@ -11,14 +11,18 @@ interface ScrollProgressValues {
 /**
  * Hook that provides scroll-based animation values for parallax effects
  *
+ * @param externalRef - Optional external ref to use for scroll tracking
  * @returns Object containing motion values for scroll-based animations:
  * - scrollProgress: 0 to 1 as container scrolls into view
  * - parallaxY: 0 to -100px for parallax background movement
  * - contentOpacity: 1 to 0 (fades out at 50% scroll)
  * - scale: 1 to 1.15 for subtle zoom effect
  */
-export function useScrollProgress(): ScrollProgressValues & { containerRef: React.RefObject<HTMLElement> } {
-  const containerRef = useRef<HTMLElement>(null)
+export function useScrollProgress(
+  externalRef?: React.RefObject<HTMLElement>
+): ScrollProgressValues & { containerRef: React.RefObject<HTMLElement> } {
+  const internalRef = useRef<HTMLElement>(null)
+  const containerRef = externalRef || internalRef
 
   const { scrollYProgress } = useScroll({
     target: containerRef,

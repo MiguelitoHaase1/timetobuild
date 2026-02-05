@@ -56,6 +56,15 @@ export function VideoBackground({
     setHasError(true)
   }
 
+  // Keep video on last frame when it ends
+  const handleVideoEnd = () => {
+    const video = videoRef.current
+    if (video) {
+      video.pause()
+      // Keep showing the last frame
+    }
+  }
+
   // Check for reduced motion preference
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
@@ -91,10 +100,10 @@ export function VideoBackground({
       }}
       autoPlay
       muted
-      loop
       playsInline
       poster={posterSrc}
       onError={handleError}
+      onEnded={handleVideoEnd}
     >
       {shouldLoad && (
         <>
