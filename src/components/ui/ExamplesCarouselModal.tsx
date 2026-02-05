@@ -17,8 +17,7 @@ const quoteCapabilityMap: Record<number, number[]> = {
   4: [1, 2], // Anushki: Custom Apps, Document Analysis
   5: [2, 3], // Meeting recordings: Document Analysis, Automated Workflows
   6: [0, 2], // PMs context: Presentations & Reports, Document Analysis
-  7: [1, 3], // Lenny: Custom Apps, Automated Workflows
-  8: [0, 1], // Aakash: Presentations & Reports, Custom Apps
+  // Removed indices 7 and 8 (Lenny and Aakash) - now on main page
 }
 
 export function ExamplesCarouselModal({ isOpen, onClose }: ExamplesCarouselModalProps) {
@@ -26,8 +25,8 @@ export function ExamplesCarouselModal({ isOpen, onClose }: ExamplesCarouselModal
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
   const { trackEvent, EVENTS } = useAnalytics()
 
-  // Combine all quotes into one array
-  const allQuotes = [...impact.powerUserQuotes, ...impact.additionalQuotes]
+  // Combine all quotes into one array, excluding the last two
+  const allQuotes = [...impact.powerUserQuotes, ...impact.additionalQuotes.slice(0, -2)]
 
   const handleOpenDemo = (capability?: string) => {
     trackEvent(EVENTS.DEMO_MODAL_OPEN, {
