@@ -16,7 +16,7 @@ export const approach = {
     {
       number: "3",
       title: "Train-the-trainer",
-      description: "After the CEO, we start with a few pilot teams (5-20 people). We deliver hands-on coaching on bringing AI to the teams' workflows. Next, capability spreads through demonstration: \"I saw what Sarah built and I want to do that.\" 🦸",
+      description: "After the CEO, we start with a few pilot teams (5-20 people). We deliver hands-on coaching on bringing AI to the teams' workflows. Next, capability spreads through demonstration: \"I saw what Sarah built and I want to do that.\"",
     },
   ],
 

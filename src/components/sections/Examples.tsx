@@ -11,7 +11,7 @@ export function Examples() {
 
   return (
     <>
-      <section ref={sectionRef} className="py-20 px-6 bg-cream-panel">
+      <section ref={sectionRef} className="py-20 px-6 bg-cream">
         <div className="max-w-4xl mx-auto">
           <SectionHeading level={2} centered className="mb-8">
             {impact.heading}
