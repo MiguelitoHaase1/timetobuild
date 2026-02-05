@@ -17,9 +17,11 @@ describe('Opening', () => {
   })
 
   it('renders as a full-height section', () => {
-    const { container } = render(<Opening />)
-    const section = container.querySelector('section')
-    expect(section).toHaveClass('min-h-screen')
+    render(<Opening />)
+    const scrollContainer = screen.getByTestId('scroll-sequence-container')
+    expect(scrollContainer).toBeInTheDocument()
+    // Check that the container has the 250vh height for scroll animation
+    expect(scrollContainer.style.height).toBe('250vh')
   })
 
   it('has video background with fallback', () => {
