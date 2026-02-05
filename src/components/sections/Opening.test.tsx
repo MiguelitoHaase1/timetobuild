@@ -22,9 +22,11 @@ describe('Opening', () => {
     expect(section).toHaveClass('min-h-screen')
   })
 
-  it('has background image', () => {
+  it('has video background with fallback', () => {
     const { container } = render(<Opening />)
-    const bgImage = container.querySelector('[style*="before.jpeg"]')
-    expect(bgImage).toBeInTheDocument()
+    // Check for video element or fallback background
+    const video = container.querySelector('video')
+    const fallback = container.querySelector('[style*="before-hero-poster.jpg"]')
+    expect(video || fallback).toBeTruthy()
   })
 })

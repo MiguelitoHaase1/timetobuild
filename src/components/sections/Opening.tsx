@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import { useSectionTracking } from '@/hooks'
+import { VideoHero } from '@/components/video'
 
 export function Opening() {
   const [showSubtitle, setShowSubtitle] = useState(false)
-  const sectionRef = useSectionTracking('opening')
+  const sectionRef = useSectionTracking('opening') as React.RefObject<HTMLDivElement>
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -14,28 +15,19 @@ export function Opening() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with subtle desaturation and sepia for brand alignment */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: 'url(/before.jpeg)',
-          backgroundPosition: 'center center',
-          filter: 'grayscale(0.3) sepia(0.2) brightness(0.9)',
-        }}
-      />
-
-      {/* Cream overlay for brand alignment and text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-cream/65 via-cream/55 to-cream/65" />
-
-      {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6">
+    <div ref={sectionRef}>
+      <VideoHero
+        webmSrc="/videos/before-hero.webm"
+        mp4Src="/videos/before-hero.mp4"
+        posterSrc="/videos/before-hero-poster.jpg"
+        fallbackSrc="/before.jpeg"
+      >
         <div className="text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-semibold text-text-primary leading-tight">
             Do your AI tools empower your employees?
           </h1>
 
-          {/* Mobile: Show after 3 seconds */}
+          {/* Mobile: Show after 1 second */}
           <p
             className={`md:hidden text-2xl sm:text-3xl font-serif text-text-primary leading-tight mt-6 transition-opacity duration-1000 ${
               showSubtitle ? 'opacity-100' : 'opacity-0'
@@ -44,7 +36,7 @@ export function Opening() {
             ... or take away their superpowers?
           </p>
 
-          {/* Desktop: Show after 3 seconds */}
+          {/* Desktop: Show after 1 second */}
           <p
             className={`hidden md:block text-3xl lg:text-4xl font-serif text-text-primary leading-tight mt-6 transition-opacity duration-1000 ${
               showSubtitle ? 'opacity-100' : 'opacity-0'
@@ -53,7 +45,7 @@ export function Opening() {
             ... or take away their superpowers?
           </p>
         </div>
-      </div>
-    </section>
+      </VideoHero>
+    </div>
   )
 }
