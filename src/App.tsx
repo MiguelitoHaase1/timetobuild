@@ -1,4 +1,4 @@
-import { Opening, Hero, Shift, Approach, Examples } from './components/sections'
+import { Opening, Hero, Shift, Approach, Examples, SupermanReveal } from './components/sections'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 
@@ -29,6 +29,7 @@ function App() {
       </motion.div>
       <Approach />
       <Examples />
+      <SupermanReveal />
       <Shift />
     </div>
   )

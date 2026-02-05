@@ -10,18 +10,8 @@ export function Shift() {
   const sectionRef = useSectionTracking('shift')
 
   return (
-    <section ref={sectionRef} className="relative py-20 px-6 bg-cream-panel overflow-hidden">
-      {/* Background Image - centered on Superman figure for mobile */}
-      <div
-        className="absolute inset-0 bg-cover bg-no-repeat opacity-15"
-        style={{
-          backgroundImage: 'url(/after.png)',
-          backgroundPosition: '60% center', // Center on Superman figure (slightly right of center)
-        }}
-      />
-
-      {/* Content with relative positioning to stay above background */}
-      <div className="relative z-10 max-w-4xl mx-auto">
+    <section ref={sectionRef} className="py-20 px-6 bg-cream-panel">
+      <div className="max-w-4xl mx-auto">
         <SectionHeading level={2} centered className="mb-12">
           {shift.heading}
         </SectionHeading>
