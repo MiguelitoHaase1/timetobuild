@@ -6,7 +6,7 @@ interface Partner {
 
 const partners: Partner[] = [
   { name: 'Claude Code', url: 'https://claude.ai/code', logo: '/logos/claude-code.png' },
-  { name: 'Codex', url: 'https://openai.com/index/openai-codex/', logo: '/logos/codex.png' },
+  { name: 'Codex', url: 'https://openai.com/index/openai-codex/', logo: '/logos/openai.png' },
   { name: 'Obsidian', url: 'https://obsidian.md/', logo: '/logos/obsidian.png' },
   { name: 'Wispr Flow', url: 'https://www.wisprflow.com/' },
   { name: 'Kapa', url: 'https://www.kapa.ai/' },
