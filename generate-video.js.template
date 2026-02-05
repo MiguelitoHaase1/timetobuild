@@ -1,0 +1,16 @@
+// Template for generate-video.js
+// Copy this to generate-video.js and it will use the API key from .env
+
+require('dotenv').config();
+const { GoogleGenAI } = require('@google/generative-ai');
+
+// Load API key from environment variable
+const API_KEY = process.env.GOOGLE_API_KEY;
+
+if (!API_KEY) {
+  throw new Error('GOOGLE_API_KEY not found in .env file');
+}
+
+const client = new GoogleGenAI({ apiKey: API_KEY });
+
+// Your video generation code here...
