@@ -1,7 +1,7 @@
 # Time to Build - Project Instructions
 
 ## Project Overview
-**Domain:** time2build.ai
+**Domain:** www.timetobuild.ai
 **Purpose:** AI Empowerment consulting website - helping mid-market companies capture 10x productivity gains
 **Tech Stack:** Vite + React 18 + TypeScript + TailwindCSS + Vitest + Playwright
 
@@ -146,7 +146,7 @@ npm run test:e2e:ui   # Run Playwright with UI
 ## Deployment
 
 - Platform: Vercel
-- Domain: time2build.ai (Cloudflare DNS)
+- Domain: www.timetobuild.ai (Cloudflare DNS)
 - Auto-deploy from `main` branch
 - Preview deployments on PRs
 
