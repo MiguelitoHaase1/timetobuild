@@ -26,7 +26,7 @@ describe('ScrollSequence', () => {
     </div>
   )
 
-  it('renders 150vh container for sticky scroll', () => {
+  it('renders 100vh container for sticky scroll', () => {
     const { container } = render(
       <ScrollSequence
         videoConfig={mockVideoConfig}
@@ -36,7 +36,7 @@ describe('ScrollSequence', () => {
 
     const scrollContainer = container.firstChild as HTMLElement
     expect(scrollContainer).toBeTruthy()
-    expect(scrollContainer.style.height).toBe('150vh')
+    expect(scrollContainer.style.height).toBe('100vh')
   })
 
   it('renders sticky inner at top: 0', () => {

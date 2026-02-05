@@ -21,8 +21,8 @@ interface ScrollSequenceProps {
  * Phase 1 (0-50%): Hero text fades out and moves up
  * Phase 2 (50-100%): Video shrinks and gains border-radius
  *
- * Uses position: sticky with 150vh container for pinned scroll effect.
- * Next section appears immediately after the scroll sequence.
+ * Uses position: sticky with 100vh container for pinned scroll effect.
+ * Next section appears immediately below the scaled video.
  */
 export function ScrollSequence({
   videoConfig,
@@ -40,7 +40,7 @@ export function ScrollSequence({
     <div
       ref={containerRef as React.RefObject<HTMLDivElement>}
       data-testid="scroll-sequence-container"
-      style={{ height: '150vh' }}
+      style={{ height: '100vh' }}
     >
       <div
         style={{
