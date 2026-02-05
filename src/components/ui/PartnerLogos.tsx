@@ -1,15 +1,21 @@
-const partners = [
-  'Claude Code',
-  'Codex',
-  'Obsidian',
-  'Wispr Flow',
-  'Kapa',
-  'AntiGravity',
-  'Amp',
-  'OpenCode',
-  'Cursor',
-  'GitHub',
-  'Granola',
+interface Partner {
+  name: string
+  url: string
+  logo?: string // Optional: path to logo image
+}
+
+const partners: Partner[] = [
+  { name: 'Claude Code', url: 'https://claude.ai/code' },
+  { name: 'Codex', url: 'https://openai.com/index/openai-codex/' },
+  { name: 'Obsidian', url: 'https://obsidian.md/' },
+  { name: 'Wispr Flow', url: 'https://www.wisprflow.com/' },
+  { name: 'Kapa', url: 'https://www.kapa.ai/' },
+  { name: 'AntiGravity', url: 'https://www.antigravity.com/' },
+  { name: 'Amp', url: 'https://www.withamp.com/' },
+  { name: 'OpenCode', url: 'https://opencode.dev/' },
+  { name: 'Cursor', url: 'https://www.cursor.com/' },
+  { name: 'GitHub', url: 'https://github.com/' },
+  { name: 'Granola', url: 'https://www.granola.so/' },
 ]
 
 export function PartnerLogos() {
@@ -22,28 +28,60 @@ export function PartnerLogos() {
       {/* Marquee container with overflow hidden */}
       <div className="relative overflow-hidden">
         {/* Gradient overlays for fade effect */}
-        <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white to-transparent z-10" />
-        <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white to-transparent z-10" />
+        <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
 
         {/* Scrolling content - duplicate for seamless loop */}
-        <div className="flex gap-6 animate-marquee">
+        <div className="flex gap-4 animate-marquee">
           {/* First set */}
           {partners.map((partner, index) => (
-            <div
+            <a
               key={`first-${index}`}
-              className="flex-shrink-0 px-3 py-1.5 bg-cream-panel rounded-md text-xs font-medium text-text-secondary whitespace-nowrap"
+              href={partner.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-shrink-0 flex items-center gap-2 px-4 py-2 bg-white rounded-lg border border-cream-panel hover:border-coral hover:shadow-sm transition-all duration-200 group"
             >
-              {partner}
-            </div>
+              {partner.logo ? (
+                <img src={partner.logo} alt={partner.name} className="h-5 w-auto" />
+              ) : (
+                <div className="flex items-center gap-2">
+                  <div className="w-5 h-5 rounded bg-coral/10 flex items-center justify-center">
+                    <span className="text-xs font-bold text-coral">
+                      {partner.name.charAt(0)}
+                    </span>
+                  </div>
+                  <span className="text-xs font-medium text-text-secondary group-hover:text-coral transition-colors whitespace-nowrap">
+                    {partner.name}
+                  </span>
+                </div>
+              )}
+            </a>
           ))}
           {/* Duplicate set for seamless loop */}
           {partners.map((partner, index) => (
-            <div
+            <a
               key={`second-${index}`}
-              className="flex-shrink-0 px-3 py-1.5 bg-cream-panel rounded-md text-xs font-medium text-text-secondary whitespace-nowrap"
+              href={partner.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-shrink-0 flex items-center gap-2 px-4 py-2 bg-white rounded-lg border border-cream-panel hover:border-coral hover:shadow-sm transition-all duration-200 group"
             >
-              {partner}
-            </div>
+              {partner.logo ? (
+                <img src={partner.logo} alt={partner.name} className="h-5 w-auto" />
+              ) : (
+                <div className="flex items-center gap-2">
+                  <div className="w-5 h-5 rounded bg-coral/10 flex items-center justify-center">
+                    <span className="text-xs font-bold text-coral">
+                      {partner.name.charAt(0)}
+                    </span>
+                  </div>
+                  <span className="text-xs font-medium text-text-secondary group-hover:text-coral transition-colors whitespace-nowrap">
+                    {partner.name}
+                  </span>
+                </div>
+              )}
+            </a>
           ))}
         </div>
       </div>
