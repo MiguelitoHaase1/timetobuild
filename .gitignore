@@ -58,3 +58,7 @@ Thumbs.db
 .AppleDouble
 .LSOverride
 ._*
+
+# Scripts with API keys
+generate-video.js
+generate_claus_image.py
