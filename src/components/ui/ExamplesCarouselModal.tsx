@@ -8,16 +8,15 @@ interface ExamplesCarouselModalProps {
   onClose: () => void
 }
 
-// Map each quote to relevant capability indices
+// Map each quote to relevant capability indices (after reordering)
 const quoteCapabilityMap: Record<number, number[]> = {
-  0: [1, 3], // Sam Bowman: Custom Apps, Automated Workflows
-  1: [0, 2], // Anonymous NN: Presentations & Reports, Document Analysis
-  2: [0, 2], // Sam Bowman (itinerary): Presentations & Reports, Document Analysis
-  3: [1, 3], // Teresa Torres: Custom Apps, Automated Workflows
-  4: [1, 2], // Anushki: Custom Apps, Document Analysis
-  5: [2, 3], // Meeting recordings: Document Analysis, Automated Workflows
-  6: [0, 2], // PMs context: Presentations & Reports, Document Analysis
-  // Removed indices 7 and 8 (Lenny and Aakash) - now on main page
+  0: [0, 2], // PMs context: Presentations & Reports, Document Analysis
+  1: [0, 1], // Meeting recordings: Presentations & Reports, Custom Apps
+  2: [1, 3], // Sam Bowman: Custom Apps, Automated Workflows
+  3: [0, 2], // Anonymous NN: Presentations & Reports, Document Analysis
+  4: [0, 2], // Sam Bowman (itinerary): Presentations & Reports, Document Analysis
+  5: [1, 3], // Teresa Torres: Custom Apps, Automated Workflows
+  6: [1, 2], // Anushki: Custom Apps, Document Analysis
 }
 
 export function ExamplesCarouselModal({ isOpen, onClose }: ExamplesCarouselModalProps) {
@@ -25,8 +24,18 @@ export function ExamplesCarouselModal({ isOpen, onClose }: ExamplesCarouselModal
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
   const { trackEvent, EVENTS } = useAnalytics()
 
-  // Combine all quotes into one array, excluding the last two
-  const allQuotes = [...impact.powerUserQuotes, ...impact.additionalQuotes.slice(0, -2)]
+  // Combine all quotes, exclude last two, then reorder to put indices 5,6 first
+  const originalQuotes = [...impact.powerUserQuotes, ...impact.additionalQuotes.slice(0, -2)]
+  // Reorder: [6, 5, 0, 1, 2, 3, 4] - put last two items (PMs context, meeting recordings) first
+  const allQuotes = [
+    originalQuotes[6], // PMs context
+    originalQuotes[5], // Meeting recordings
+    originalQuotes[0], // Sam Bowman
+    originalQuotes[1], // Anonymous
+    originalQuotes[2], // Sam Bowman itinerary
+    originalQuotes[3], // Teresa Torres
+    originalQuotes[4], // Anushki
+  ]
 
   const handleOpenDemo = (capability?: string) => {
     trackEvent(EVENTS.DEMO_MODAL_OPEN, {
