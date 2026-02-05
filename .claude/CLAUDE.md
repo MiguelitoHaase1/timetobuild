@@ -170,6 +170,146 @@ npm run test:e2e:ui   # Run Playwright with UI
 - React Testing Library 16.1.0
 - Playwright 1.49.1 (E2E)
 
+## Scroll Animation Patterns (Learnings from Opening Section)
+
+### Architecture Overview
+
+The Opening section uses a sophisticated scroll-driven animation with **sticky positioning** and **framer-motion transforms**:
+
+```
+ScrollSequence (130vh container)
+└── Sticky Inner (position: sticky, top: 0, height: 100vh)
+    ├── Video (animated scale + border-radius)
+    ├── Hero Text (animated opacity + translateY)
+    └── Dark Overlay (for text contrast)
+
+Hero Section (follows ScrollSequence)
+└── Motion Wrapper (animated translateY, -15vh margin)
+```
+
+### Key Implementation Patterns
+
+**1. Scroll Container Heights**
+- Use `130vh` for scroll sequence container to provide animation room
+- The sticky inner stays at `100vh` (viewport height)
+- Extra 30vh allows next section to slide up smoothly
+- Adjust based on desired animation duration
+
+**2. Sticky Positioning Pattern**
+```tsx
+<div style={{ height: '130vh' }}>  {/* Scroll room */}
+  <div style={{ position: 'sticky', top: 0, height: '100vh' }}>
+    {/* Pinned content that animates as you scroll */}
+  </div>
+</div>
+```
+
+**3. Framer Motion Scroll Hooks**
+```tsx
+const { scrollYProgress } = useScroll({
+  target: containerRef,
+  offset: ['start start', 'end start']
+})
+
+// Map scroll progress to animation values
+const videoScale = useTransform(scrollYProgress, [0.3, 0.6], [1, 0.65])
+```
+
+**4. Slide-Up Next Section**
+```tsx
+// In parent component (App.tsx)
+const heroY = useTransform(scrollYProgress, [0, 0.8], [80, 0])
+
+<motion.div style={{ y: heroY, marginTop: '-15vh' }}>
+  <NextSection />
+</motion.div>
+```
+
+### UX Refinements We Discovered
+
+**Text Contrast Over Video**
+- Add dark gradient overlay: `rgba(0, 0, 0, 0.4)` over video
+- Use white text with `drop-shadow-lg` for readability
+- Overlay gradient: darker at top/bottom, lighter in middle
+
+**Animation Timing**
+- Stop animations at 80% progress (not 100%) to avoid glitches
+- Use gentler transforms (80px not 100px) for smoother feel
+- Maintain breathing room between sections (-15vh not -30vh)
+
+**Performance Optimizations**
+- Only animate GPU-accelerated properties: `transform`, `opacity`
+- Add `willChange: 'transform, opacity'` to animated elements
+- Never animate `width`, `height`, `top`, `left` directly
+- Use `scale` instead of width/height changes
+
+**Accessibility**
+- Check `prefers-reduced-motion` and return static values
+- Return `motionValue()` with static positions when reduced motion enabled
+- Don't use early returns in hooks (violates Rules of Hooks)
+
+### Testing Scroll Animations
+
+**Test Utilities** (`src/test/test-utils.tsx`):
+```tsx
+// Create controllable MotionValues for testing
+export function createMockMotionValue<T>(initial: T): MotionValue<T>
+
+// Mock reduced motion preference
+export function mockReducedMotion(enabled: boolean): () => void
+```
+
+**Unit Tests** - Test hook logic:
+- Phase transitions at correct scroll percentages
+- Transform value ranges (opacity 1→0, y 0→-50, etc.)
+- Reduced motion returns static values
+- Ref warnings in tests are expected (not production issues)
+
+**E2E Tests** - Test actual behavior:
+- Visual state at key scroll positions (0%, 30%, 60%, 100%)
+- Animation smoothness (no jumps or glitches)
+- Reduced motion compliance
+
+### Common Issues & Solutions
+
+**Issue: "Glitchy snap" at end of animation**
+- **Cause:** Animation completes at 100% with no buffer
+- **Solution:** Stop at 80% progress `[0, 0.8]` instead of `[0, 1]`
+
+**Issue: "Text hard to read over video"**
+- **Cause:** Insufficient contrast between text and video
+- **Solution:** Dark gradient overlay + white text + drop-shadow
+
+**Issue: "Next section too far down"**
+- **Cause:** Scroll container height too tall
+- **Solution:** Reduce from 250vh → 130vh and use negative margin
+
+**Issue: "Rendered fewer hooks than expected"**
+- **Cause:** Early return before calling all hooks
+- **Solution:** Call all hooks first, conditionally return values after
+
+### When to Use This Pattern
+
+**Good For:**
+- Hero sections with immersive media
+- Storytelling sequences that need pacing
+- Revealing content progressively
+- Creating focus before transitioning
+
+**Avoid When:**
+- Content needs immediate access (accessibility)
+- Mobile-first design (scroll hijacking feels bad on mobile)
+- Users need quick scanning (don't trap them)
+
+### Future Adaptations
+
+When adapting this pattern for other sections:
+1. Keep scroll container height reasonable (100-150vh)
+2. Test on mobile - may need simpler version
+3. Always include reduced motion fallback
+4. Maintain at least 10-15vh breathing room between sections
+5. Stop animations at 70-80% to avoid glitches
+
 ## Implementation Phases
 
 ### Phase 1: Foundation ✓ (Current)
