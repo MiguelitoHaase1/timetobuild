@@ -25,48 +25,17 @@ export function PartnerLogos() {
         Collaboration Partners
       </p>
 
-      {/* Marquee container with overflow hidden */}
-      <div className="relative overflow-hidden">
+      {/* Horizontally scrollable container */}
+      <div className="relative">
         {/* Gradient overlays for fade effect */}
         <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
 
-        {/* Scrolling content - duplicate for seamless loop */}
-        <div className="flex gap-4 animate-marquee">
-          {/* First set */}
+        {/* Scrollable content with snap scrolling */}
+        <div className="flex gap-4 overflow-x-auto scrollbar-hide scroll-smooth pb-2 px-1">
           {partners.map((partner, index) => (
             <a
-              key={`first-${index}`}
-              href={partner.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-shrink-0 flex items-center gap-2 px-4 py-2 bg-white rounded-lg border border-cream-panel hover:border-coral hover:shadow-sm transition-all duration-200 group"
-            >
-              {partner.logo ? (
-                <div className="flex items-center gap-2">
-                  <img src={partner.logo} alt={partner.name} className="h-5 w-5 object-contain" />
-                  <span className="text-xs font-medium text-text-secondary group-hover:text-coral transition-colors whitespace-nowrap">
-                    {partner.name}
-                  </span>
-                </div>
-              ) : (
-                <div className="flex items-center gap-2">
-                  <div className="w-5 h-5 rounded bg-coral/10 flex items-center justify-center">
-                    <span className="text-xs font-bold text-coral">
-                      {partner.name.charAt(0)}
-                    </span>
-                  </div>
-                  <span className="text-xs font-medium text-text-secondary group-hover:text-coral transition-colors whitespace-nowrap">
-                    {partner.name}
-                  </span>
-                </div>
-              )}
-            </a>
-          ))}
-          {/* Duplicate set for seamless loop */}
-          {partners.map((partner, index) => (
-            <a
-              key={`second-${index}`}
+              key={index}
               href={partner.url}
               target="_blank"
               rel="noopener noreferrer"
