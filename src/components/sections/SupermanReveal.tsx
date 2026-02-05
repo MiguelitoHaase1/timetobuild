@@ -34,7 +34,7 @@ export function SupermanReveal() {
                 variant="primary"
                 className="shadow-2xl text-sm md:text-base px-4 py-2 md:px-8 md:py-4"
               >
-                Examples of AI empowered employees
+                Examples of what AI empowered employees build
               </Button>
             </div>
           </div>
