@@ -2,7 +2,6 @@ import { ReactNode } from 'react'
 import { motion } from 'framer-motion'
 import { useScrollSequence } from '../../hooks'
 import { VideoBackground } from '../video/VideoBackground'
-import { SectionHeading } from '../ui/SectionHeading'
 
 interface VideoConfig {
   webmSrc: string
@@ -14,22 +13,20 @@ interface VideoConfig {
 interface ScrollSequenceProps {
   videoConfig: VideoConfig
   openingContent: ReactNode
-  nextSectionTitle: string
 }
 
 /**
- * ScrollSequence component with 3-phase scroll-driven animation
+ * ScrollSequence component with 2-phase scroll-driven animation
  *
- * Phase 1 (0-30%): Hero text fades out and moves up
- * Phase 2 (30-60%): Video shrinks and gains border-radius
- * Phase 3 (60-100%): Next section title rises and fades in
+ * Phase 1 (0-50%): Hero text fades out and moves up
+ * Phase 2 (50-100%): Video shrinks and gains border-radius
  *
- * Uses position: sticky with 250vh container for pinned scroll effect
+ * Uses position: sticky with 150vh container for pinned scroll effect.
+ * Next section appears immediately after the scroll sequence.
  */
 export function ScrollSequence({
   videoConfig,
   openingContent,
-  nextSectionTitle,
 }: ScrollSequenceProps) {
   const {
     containerRef,
@@ -37,15 +34,13 @@ export function ScrollSequence({
     heroY,
     videoScale,
     videoBorderRadius,
-    nextSectionOpacity,
-    nextSectionY,
   } = useScrollSequence()
 
   return (
     <div
       ref={containerRef as React.RefObject<HTMLDivElement>}
       data-testid="scroll-sequence-container"
-      style={{ height: '250vh' }}
+      style={{ height: '150vh' }}
     >
       <div
         style={{
@@ -73,6 +68,15 @@ export function ScrollSequence({
             posterSrc={videoConfig.posterSrc}
             fallbackSrc={videoConfig.fallbackSrc}
           />
+          {/* Dark overlay for text readability */}
+          <div
+            style={{
+              position: 'absolute',
+              inset: 0,
+              background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.4) 100%)',
+              pointerEvents: 'none',
+            }}
+          />
         </motion.div>
 
         {/* Opening content with fade and translate */}
@@ -87,25 +91,6 @@ export function ScrollSequence({
           }}
         >
           {openingContent}
-        </motion.div>
-
-        {/* Next section title rising */}
-        <motion.div
-          data-testid="next-section-title"
-          style={{
-            opacity: nextSectionOpacity,
-            y: nextSectionY,
-            position: 'absolute',
-            bottom: '20%',
-            left: 0,
-            right: 0,
-            zIndex: 10,
-            willChange: 'transform, opacity',
-          }}
-        >
-          <SectionHeading level={2} centered>
-            {nextSectionTitle}
-          </SectionHeading>
         </motion.div>
       </div>
     </div>

@@ -26,20 +26,17 @@ describe('ScrollSequence', () => {
     </div>
   )
 
-  const mockNextSectionTitle = 'The Shift'
-
-  it('renders 250vh container for sticky scroll', () => {
+  it('renders 150vh container for sticky scroll', () => {
     const { container } = render(
       <ScrollSequence
         videoConfig={mockVideoConfig}
         openingContent={mockOpeningContent}
-        nextSectionTitle={mockNextSectionTitle}
       />
     )
 
     const scrollContainer = container.firstChild as HTMLElement
     expect(scrollContainer).toBeTruthy()
-    expect(scrollContainer.style.height).toBe('250vh')
+    expect(scrollContainer.style.height).toBe('150vh')
   })
 
   it('renders sticky inner at top: 0', () => {
@@ -47,7 +44,6 @@ describe('ScrollSequence', () => {
       <ScrollSequence
         videoConfig={mockVideoConfig}
         openingContent={mockOpeningContent}
-        nextSectionTitle={mockNextSectionTitle}
       />
     )
 
@@ -58,20 +54,17 @@ describe('ScrollSequence', () => {
     expect(stickyInner.style.height).toBe('100vh')
   })
 
-  it('renders children: video, opening content, next section title', () => {
+  it('renders children: video and opening content', () => {
     render(
       <ScrollSequence
         videoConfig={mockVideoConfig}
         openingContent={mockOpeningContent}
-        nextSectionTitle={mockNextSectionTitle}
       />
     )
 
     expect(screen.getByTestId('video-container')).toBeInTheDocument()
     expect(screen.getByTestId('opening-content')).toBeInTheDocument()
-    expect(screen.getByTestId('next-section-title')).toBeInTheDocument()
     expect(screen.getByText('Opening Content')).toBeInTheDocument()
-    expect(screen.getByText('The Shift')).toBeInTheDocument()
   })
 
   it('adds data-testid attributes for E2E', () => {
@@ -79,14 +72,12 @@ describe('ScrollSequence', () => {
       <ScrollSequence
         videoConfig={mockVideoConfig}
         openingContent={mockOpeningContent}
-        nextSectionTitle={mockNextSectionTitle}
       />
     )
 
     expect(screen.getByTestId('scroll-sequence-container')).toBeInTheDocument()
     expect(screen.getByTestId('video-container')).toBeInTheDocument()
     expect(screen.getByTestId('opening-content')).toBeInTheDocument()
-    expect(screen.getByTestId('next-section-title')).toBeInTheDocument()
   })
 
   it('respects reduced motion preference', () => {
@@ -96,7 +87,6 @@ describe('ScrollSequence', () => {
       <ScrollSequence
         videoConfig={mockVideoConfig}
         openingContent={mockOpeningContent}
-        nextSectionTitle={mockNextSectionTitle}
       />
     )
 
@@ -104,6 +94,5 @@ describe('ScrollSequence', () => {
     expect(screen.getByTestId('scroll-sequence-container')).toBeInTheDocument()
     expect(screen.getByTestId('video-container')).toBeInTheDocument()
     expect(screen.getByTestId('opening-content')).toBeInTheDocument()
-    expect(screen.getByTestId('next-section-title')).toBeInTheDocument()
   })
 })
