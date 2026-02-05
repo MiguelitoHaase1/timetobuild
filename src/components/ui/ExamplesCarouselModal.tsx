@@ -10,8 +10,8 @@ interface ExamplesCarouselModalProps {
 
 // Map each quote to relevant capability indices (after reordering)
 const quoteCapabilityMap: Record<number, number[]> = {
-  0: [0, 2], // PMs context: Presentations & Reports, Document Analysis
-  1: [0, 1], // Meeting recordings: Presentations & Reports, Custom Apps
+  0: [0, 1], // Meeting recordings: Presentations & Reports, Custom Apps
+  1: [0, 2], // PMs context: Presentations & Reports, Document Analysis
   2: [1, 3], // Sam Bowman: Custom Apps, Automated Workflows
   3: [0, 2], // Anonymous NN: Presentations & Reports, Document Analysis
   4: [0, 2], // Sam Bowman (itinerary): Presentations & Reports, Document Analysis
@@ -26,10 +26,10 @@ export function ExamplesCarouselModal({ isOpen, onClose }: ExamplesCarouselModal
 
   // Combine all quotes, exclude last two, then reorder to put indices 5,6 first
   const originalQuotes = [...impact.powerUserQuotes, ...impact.additionalQuotes.slice(0, -2)]
-  // Reorder: [6, 5, 0, 1, 2, 3, 4] - put last two items (PMs context, meeting recordings) first
+  // Reorder: [5, 6, 0, 1, 2, 3, 4] - meeting recordings first, then PMs context
   const allQuotes = [
-    originalQuotes[6], // PMs context
     originalQuotes[5], // Meeting recordings
+    originalQuotes[6], // PMs context
     originalQuotes[0], // Sam Bowman
     originalQuotes[1], // Anonymous
     originalQuotes[2], // Sam Bowman itinerary
