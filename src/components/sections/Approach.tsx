@@ -1,5 +1,6 @@
 import { SectionHeading } from '../ui/SectionHeading'
 import { Card } from '../ui/Card'
+import { PartnerLogos } from '../ui/PartnerLogos'
 import { approach } from '@/content'
 import { useSectionTracking } from '@/hooks'
 
@@ -25,6 +26,7 @@ export function Approach() {
             <p className="text-text-secondary text-small">
               {approach.cards[0].description}
             </p>
+            <PartnerLogos />
           </Card>
 
           <Card>
