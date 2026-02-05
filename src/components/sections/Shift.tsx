@@ -25,7 +25,7 @@ export function Shift() {
           <img
             src="/superman-after.png"
             alt="Empowered employee celebrating"
-            className="w-full h-full object-cover object-[30%_center] md:object-[center_40%]"
+            className="w-full h-full object-cover object-[75%_center] md:object-[center_40%]"
           />
           {/* Dark overlay for text readability */}
           <div className="absolute inset-0 bg-black/60" />
