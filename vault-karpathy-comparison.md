@@ -7,15 +7,25 @@
 
 ## Karpathy's System: The Core Idea
 
+On **April 3, 2026**, Karpathy posted on X: *"Something I'm finding very useful recently: using LLMs to build personal knowledge bases for various topics of research interest. A large fraction of my recent token throughput is going less into manipulating code, and more into manipulating knowledge (stored as markdown and images)."* The post got **16+ million views.**
+
+The next day, he dropped the [idea file gist](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) -- the full architecture.
+
 Karpathy's thesis is simple and sharp: **stop using LLMs as search engines. Use them as librarians.**
 
 Most people's experience with LLMs and documents looks like RAG: the LLM retrieves relevant chunks at query time and generates an answer. The problem? The LLM is *rediscovering knowledge from scratch on every question.* There's no accumulation. Subtle questions requiring synthesis across multiple documents require the LLM to piece together relevant fragments every time.
 
 Karpathy flips this. Instead of querying raw docs, the LLM **compiles** them into a persistent, structured wiki. Knowledge gets compiled once, then kept current -- not re-derived repeatedly.
 
+His analogy: **"Obsidian is the IDE, the LLM is the programmer, the wiki is the codebase."**
+
 > "The tedious part of maintaining a knowledge base is not the reading or the thinking -- it's the bookkeeping. Updating cross-references, keeping summaries current, noting when new data contradicts old claims, maintaining consistency across dozens of pages."
 
 > "Humans abandon wikis because the maintenance burden grows faster than the value. LLMs don't get bored, don't forget to update a cross-reference, and can touch 15 files in one pass."
+
+> "RAG retrieves and forgets. A wiki accumulates and compounds."
+
+At the time of posting, Karpathy's own wiki contained **~100 articles and ~400,000 words** -- without him writing a single word directly.
 
 ---
 
@@ -43,13 +53,37 @@ Karpathy flips this. Instead of querying raw docs, the LLM **compiles** them int
 ## The Three Operations
 
 ### Ingest
-User supplies new source. LLM reads it, extracts key information, integrates into the existing wiki. Updates relevant pages, maintains cross-references, appends to operation log.
+User supplies new source. LLM reads it, extracts key information, integrates into the existing wiki. Updates relevant pages, maintains cross-references, appends to operation log. A single new paper might cascade changes across **10-15 existing pages**.
 
 ### Query
 User asks questions against the wiki. LLM searches relevant pages and synthesizes answers with citations. Valuable results become new wiki pages -- knowledge compounds.
 
 ### Lint
-Periodic health checks. Identifies contradictions, stale claims, orphan pages, missing cross-references, and data gaps. The LLM scans the wiki for inconsistencies.
+Periodic health checks. Identifies contradictions, stale claims, orphan pages, missing cross-references, and data gaps. The LLM scans the wiki for inconsistencies. Can trigger web searches to fill identified gaps.
+
+---
+
+## The Graph Structure: How Content Connects
+
+The wiki is not a flat collection of documents. It's an **interconnected graph** with explicit, typed relationships.
+
+**Backlinks and cross-references:** The LLM generates summaries, extracts key concepts, writes dedicated articles for important topics, and creates backlinks between related ideas. A single source ingestion cascades across the wiki.
+
+**Typed edges** (from the v2 extension pattern building on Karpathy's original):
+
+| Edge Type | Meaning |
+|-----------|---------|
+| `supports` | Evidence reinforcing a claim |
+| `contradicts` | Conflicting evidence |
+| `evolved_into` | How an idea changed over time |
+| `depends_on` | Prerequisite relationships |
+| `caused` | Causal chain |
+| `fixed` | Resolution of a problem |
+| `supersedes` | Replacement relationship |
+
+As the community around his work puts it: *"Not all connections are equal. 'uses,' 'depends on,' 'contradicts,' 'caused,' 'fixed,' 'supersedes' carry different semantic weight."*
+
+**Graph-based traversal:** Queries leverage the graph topology -- start at a node, walk outward through typed edges, find everything downstream. This catches connections that keyword search misses.
 
 ---
 
@@ -75,10 +109,10 @@ By choosing markdown, the knowledge base isn't locked to any vendor. If Obsidian
 Each ingest makes the wiki more valuable. Cross-references deepen. Contradictions surface. This is the opposite of chat -- where each conversation starts from zero.
 
 ### 4. Humans Curate, LLMs Maintain
-The human decides what's worth knowing. They curate sources and direct analysis. The LLM handles everything else -- summarizing, cross-referencing, consistency-checking.
+> "The human's job is to curate sources, direct the analysis, ask good questions, and think about what it all means. The LLM's job is everything else."
 
 ### 5. The Memex, Realized
-Karpathy explicitly echoes Vannevar Bush's 1945 Memex concept: personal, curated knowledge stores with associative trails between documents. The difference: *"The part he couldn't solve was who does the maintenance. The LLM handles that."*
+Karpathy explicitly echoes Vannevar Bush's 1945 Memex concept: personal, curated knowledge stores with associative trails between documents. *"Bush's vision was closer to this than to what the web became: private, actively curated, with the connections between documents as valuable as the documents themselves."* The difference: *"The part he couldn't solve was who does the maintenance. The LLM handles that."*
 
 ---
 
@@ -86,22 +120,35 @@ Karpathy explicitly echoes Vannevar Bush's 1945 Memex concept: personal, curated
 
 Separately, Karpathy founded Eureka Labs (July 2024) -- an "AI native" education platform. The vision: **teacher + AI symbiosis.** Human experts design course materials. AI teaching assistants guide students through them.
 
-First product: LLM101n, an undergraduate course on training your own AI.
+First product: LLM101n -- 17 chapters building from fundamentals to production LLMs, structured as a prerequisite-based progression (bigram models -> attention -> transformers -> optimization -> deployment). Guiding philosophy via Feynman: *"What I cannot create, I do not understand."*
 
-The connection to the LLM Wiki is philosophical: Karpathy sees knowledge as something that should be *structured, sequenced, and actively maintained* -- whether that's a personal wiki or a curriculum. The AI doesn't replace the expert; it handles the scaffolding.
+The connection to the LLM Wiki is philosophical: Karpathy sees knowledge as something that should be *structured, sequenced, and actively maintained* -- whether that's a personal wiki or a curriculum. LLM101n is itself a directed graph of prerequisite knowledge nodes. The AI doesn't replace the expert; it handles the scaffolding.
 
 ---
 
 ## Community Response
 
 Within 48 hours of Karpathy's gist, the community built:
-- **Graphify** -- turns any folder into a queryable knowledge graph with Obsidian vault output
-- **LLM Wiki Kit** -- MCP server implementations
+- **Graphify** -- turns any folder into a queryable knowledge graph with Obsidian vault output; reportedly cuts token usage per query by **71.5x**
+- **llmwiki** -- open source implementation with MCP + Claude integration
 - **Wiki-Recall** -- compiled knowledge + layered memory (5-layer architecture, 1,060 tests)
-- Multiple Logseq, Notion, and Obsidian integrations
-- .NET, Python, and Node implementations
+- **second-brain** -- Obsidian pattern implementation
+- Multiple Logseq, Notion, .NET, Python, and Node implementations
 
 The pattern clearly resonated. The hunger was there.
+
+---
+
+## Karpathy's Tooling Stack
+
+- **Obsidian** -- the IDE for browsing the wiki (renders markdown with backlinks, graph view)
+- **qmd** -- local search engine he "vibe coded"; BM25/vector hybrid search with LLM re-ranking; available as CLI or MCP server
+- **Marp** -- markdown-based slide decks generated from wiki content
+- **Dataview** -- query wiki frontmatter for dynamic tables
+- **Git** -- the wiki is just a git repo of markdown files
+- **Obsidian Web Clipper** -- converts web content to markdown for ingest
+
+Provider-agnostic: works with OpenAI, Anthropic, Gemini, Ollama, OpenRouter, Groq, Together, xAI, Cerebras, or fully offline.
 
 ---
 
@@ -150,6 +197,17 @@ I couldn't find Vault in this codebase. To complete this analysis, I need to und
 **The bookkeeping framing is the best part.** "The tedious part is not the reading or the thinking -- it's the bookkeeping." This reframes AI from "replacement for thinking" to "replacement for drudgery." That's the right frame for adoption.
 
 **What he may underestimate:** The cold-start problem. Building the initial schema and seeding the wiki takes real effort. Most people will bail before the compounding kicks in. The tools that win will be the ones that make the first 10 minutes magical, not just the 10th hour.
+
+---
+
+## Sources
+
+- [Karpathy's original tweet (April 3, 2026)](https://x.com/karpathy/status/2039805659525644595) -- 16M+ views
+- [LLM Wiki GitHub Gist (idea file)](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f)
+- [LLM Wiki v2 Extension](https://gist.github.com/rohitg00/2067ab416f7bbe447c1977edaaa681e2) -- typed edges, dashboards
+- [Eureka Labs](https://eurekalabs.ai/) / [LLM101n Course](https://github.com/karpathy/LLM101n)
+- [Graphify](https://github.com/safishamsi/graphify) -- community implementation (71.5x token reduction)
+- [llmwiki](https://github.com/lucasastorian/llmwiki) -- open source Claude MCP implementation
 
 ---
 
